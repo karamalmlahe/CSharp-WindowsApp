@@ -108,19 +108,31 @@ namespace App
 
         private void lblTest_Click(object sender, EventArgs e)
         {
-            lblBtnExam.ForeColor = Color.White;
-            lblBtnGame.ForeColor = Color.Black;
+
             timer1.Start();
-            panelExam.Visible = true;
-            groupBox1.Visible = false;
+
+            panelName.Visible = true;
+
+            //btn color on click
+            lblBtnExam.BackColor = this.BackColor;
+            lblBtnGame.BackColor = SystemColors.MenuHighlight;
+            lblBtnIMGExam.BackColor = SystemColors.MenuHighlight;
+            lblBtnTeacher.BackColor = SystemColors.MenuHighlight;
         }
 
         private void lblGame_Click(object sender, EventArgs e)
         {
-            lblBtnGame.ForeColor = Color.White;
-            lblBtnExam.ForeColor = Color.Black;
             timer1.Start();
-            groupBox1.Visible = true;
+
+            //unShow panels
+            panelName.Visible = false;
+            panelQuestion.Visible = false;
+
+            //btn color on click
+            lblBtnExam.BackColor = SystemColors.MenuHighlight;
+            lblBtnGame.BackColor = this.BackColor;
+            lblBtnIMGExam.BackColor = SystemColors.MenuHighlight;
+            lblBtnTeacher.BackColor = SystemColors.MenuHighlight;
         }
 
         private void lblTitle_MouseDown(object sender, MouseEventArgs e)
@@ -165,7 +177,11 @@ namespace App
             {
                 lblBtnExam.Left -= 1;
                 lblBtnGame.Left -=1;
+                lblBtnIMGExam.Left -= 1;
+                lblBtnTeacher.Left -= 1;
             }
+            if (panelName.Top > 80)
+                panelName.Top -= 5;
 
 
             timer1.Interval=1;
@@ -194,6 +210,13 @@ namespace App
             {
                 if (_Questions.Count >= 1)
                 {
+                    //Enabled Btns Menu
+                    lblBtnGame.Enabled = false;
+                    lblBtnIMGExam.Enabled = false;
+                    lblBtnTeacher.Enabled = false;
+
+                    timer2.Start();
+                    panelQuestion.Enabled = true;
                     counter = 0;
                     QuestNum = 0;
                     QuestNum++;
@@ -211,6 +234,7 @@ namespace App
                     lblQNumber.Text = "Question " + QuestNum;
                     panelName.Enabled = false;
                     panelQuestion.Visible = true;
+
                 }
                 else
                     MessageBox.Show("No Questions", "Karam App");
@@ -269,6 +293,7 @@ namespace App
         {
             if (A.GetQuestions().Count >= 1)
             {
+                lblNext.Text = "Next";
                 lblBack.Enabled = true;
                 AddClinetChoice();
                 counter++;
@@ -287,6 +312,12 @@ namespace App
                 }
                 else
                 {
+                    //Enabled to true Btns Menu When The Exam is Done
+                    lblBtnGame.Enabled = true;
+                    lblBtnIMGExam.Enabled = true;
+                    lblBtnTeacher.Enabled = true;
+
+
                     panelName.Enabled = true;
                     panelQuestion.Visible = false;
                     MessageBox.Show(GetGrade().ToString());
@@ -331,6 +362,43 @@ namespace App
                     sum += 100/ClinetChoice.Length;
             }
             return sum;
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (panelQuestion.Top > 130)
+                panelQuestion.Top -= 3;
+            timer2.Interval = 1;
+        }
+
+        private void lblBtnIMGExam_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+
+            //unShow panels
+            panelName.Visible = false;
+            panelQuestion.Visible = false;
+
+            //btn color on click
+            lblBtnExam.BackColor = SystemColors.MenuHighlight;
+            lblBtnGame.BackColor = SystemColors.MenuHighlight;
+            lblBtnIMGExam.BackColor = this.BackColor;
+            lblBtnTeacher.BackColor = SystemColors.MenuHighlight;
+        }
+
+        private void lblBtnTeacher_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+
+            //unShow panels
+            panelName.Visible = false;
+            panelQuestion.Visible = false;
+
+            //btn color on click
+            lblBtnExam.BackColor = SystemColors.MenuHighlight;
+            lblBtnGame.BackColor = SystemColors.MenuHighlight;
+            lblBtnIMGExam.BackColor = SystemColors.MenuHighlight;
+            lblBtnTeacher.BackColor = this.BackColor;
         }
     }
 }
