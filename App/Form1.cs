@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using System.IO;
 
 using System.Drawing.Drawing2D;
 
@@ -140,6 +140,7 @@ namespace App
             lblBtnTeacher.Enabled = true;
 
             timer1.Start();
+            timer6.Start();
             timer2.Stop();
             timer3.Stop();
             panelName.Location = new Point(304, 526);
@@ -187,7 +188,7 @@ namespace App
             {
                 this.Width += 5;
                 lblTitle.Width += 5;
-                lblClose.Left+= 5;
+                lblClose.Left += 5;
             }
             if (lblMenu.Width > 233)
             {
@@ -197,7 +198,7 @@ namespace App
             if (lblBtnExam.Left != 0)
             {
                 lblBtnExam.Left -= 1;
-                lblBtnGame.Left -=1;
+                lblBtnGame.Left -= 1;
                 lblBtnIMGExam.Left -= 1;
                 lblBtnTeacher.Left -= 1;
             }
@@ -205,7 +206,7 @@ namespace App
                 panelName.Top -= 5;
 
 
-            timer1.Interval=1;
+            timer1.Interval = 1;
         }
 
         private void btn1_Click(object sender, EventArgs e)
@@ -231,7 +232,7 @@ namespace App
         private void lblStart_Click(object sender, EventArgs e)
         {
             _Questions = A.GetQuestions();
-            if (txtBoxName.Text!= "")
+            if (txtBoxName.Text != "")
             {
                 if (_Questions.Count >= 1)
                 {
@@ -253,7 +254,7 @@ namespace App
                     counter = 0;
                     QuestNum = 0;
                     QuestNum++;
-                    for (int i = 0; i < RandomQuest.Length && i< A.GetQuestions().Count; i++)
+                    for (int i = 0; i < RandomQuest.Length && i < A.GetQuestions().Count; i++)
                     {
                         int index = rnd.Next(0, _Questions.Count);
                         RandomQuest[i] = new Question(_Questions[index].GetQuestion(), _Questions[index].GetAnswer1(), _Questions[index].GetAnswer2(), _Questions[index].GetAnswer3(), _Questions[index].GetAnswer4(), _Questions[index].GetCorrect());
@@ -285,7 +286,7 @@ namespace App
                 ClinetChoiceNumber[counter] = 1;
                 ClinetChoiceAnswer[counter] = radioBtnAnswer1.Text;
                 radioBtnAnswer1.Checked = false;
-                
+
             }
             else if (radioBtnAnswer2.Checked == true)
             {
@@ -346,7 +347,7 @@ namespace App
                     radioBtnAnswer4.Text = RandomQuest[counter].GetAnswer4();
                     lblQNumber.Text = "Question " + QuestNum;
                     CheckClinetChoice();
-                    if (counter== RandomQuest.Length - 1)
+                    if (counter == RandomQuest.Length - 1)
                         lblNext.Text = "Done";
                 }
                 else
@@ -358,7 +359,7 @@ namespace App
 
                     timer1.Stop();
                     timer2.Stop();
-                    panelName.Location= new Point(304, 526);
+                    panelName.Location = new Point(304, 526);
                     panelQuestion.Location = new Point(304, 579);
 
                     dataGridView1.Visible = true;
@@ -366,8 +367,8 @@ namespace App
                     //Result Panel
                     lblName2.Text = "Name : " + txtBoxName.Text;
                     lblDateDay.Text = "Data : " + Date;
-                    lblTimeStart.Text ="Starting In : "+StartingExam;
-                    lblEndTime.Text= "Ending In : " + DateTime.Now.ToString("hh:mm:ss tt");//EndExam
+                    lblTimeStart.Text = "Starting In : " + StartingExam;
+                    lblEndTime.Text = "Ending In : " + DateTime.Now.ToString("hh:mm:ss tt");//EndExam
 
                     InsertStudentGrade(txtBoxName.Text, GetGrade());
 
@@ -387,7 +388,7 @@ namespace App
         private void lblBack_Click(object sender, EventArgs e)
         {
             AddClinetChoice();
-            if (counter >0)
+            if (counter > 0)
             {
                 counter--;
                 QuestNum--;
@@ -403,13 +404,13 @@ namespace App
             }
             else
             {
-                    lblBack.Enabled = true;
+                lblBack.Enabled = true;
             }
         }
         private int GetGrade()
         {
             int sum = 0;
-            for(int i = 0; i < ClinetChoiceAnswer.Length; i++)
+            for (int i = 0; i < ClinetChoiceAnswer.Length; i++)
             {
                 if (ClinetChoiceAnswer[i] == RandomQuest[i].GetCorrect())
                     sum += 100 / ClinetChoiceNumber.Length;
@@ -419,7 +420,7 @@ namespace App
                     WorngAnswers++;
                 }
             }
-            lblWrongAnswers.Text = "Wrong Answers : "+WorngAnswers;
+            lblWrongAnswers.Text = "Wrong Answers : " + WorngAnswers;
             if (WorngAnswers > 3)
             {
                 lblResultExamColor.Text = "Failed";
@@ -506,35 +507,239 @@ namespace App
                 mySqlConnection.Close();
                 InsertQuestions();
             }
-            catch(Exception err)
+            catch
             {
 
-                    //MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         //insert Func
-        private void InsertStudentGrade(string name,int grade)
+        private void InsertStudentGrade(string name, int grade)
         {
+            //try
+            //{
+
+            //    SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+            //    SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
+            //    mySqlConnection.Open();
+            //    mySqlCommand.CommandText = "insert into Grades(Name ,Grade) values('"+name+"',"+grade+");";
+            //    mySqlCommand.ExecuteNonQuery();
+            //    mySqlConnection.Close();
+            //}
+            //catch (Exception err)
+            //{
+            //    MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
             try
             {
+                FileStream f = new FileStream("ExamGrade.my", FileMode.Append);
+                BinaryWriter sr = new BinaryWriter(f);
+                sr.Write(name);
+                sr.Write(grade);
 
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "insert into Grades(Name ,Grade) values('"+name+"',"+grade+");";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
+                sr.Close();
+                f.Close();
+                MessageBox.Show("Added...");
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(err.Message);
             }
         }
 
         private void lblTryAgainExam_Click(object sender, EventArgs e)
         {
             lblTest_Click(sender, e);
+        }
+        private void SetLocationAndHeightToColumnsInGame()
+        {
+            //1 UP
+            int randomSizeH = rnd.Next(0, 200);
+            lblWallUp1.Size = new Size(lblWallDown1.Size.Width, randomSizeH);
+            lblWallUp1.Location = new Point(488, 0);
+            //1 Down
+            randomSizeH = rnd.Next(0, 200 - randomSizeH);
+            lblWallDown1.Size = new Size(lblWallDown1.Size.Width, randomSizeH);
+            lblWallDown1.Location = new Point(488, panelGameZone.Size.Height - randomSizeH);
+
+            //2 UP
+            randomSizeH = rnd.Next(0, 200);
+            lblWallUp2.Size = new Size(lblWallDown1.Size.Width, randomSizeH);
+            lblWallUp2.Location = new Point(610, 0);
+            //2 Down
+            randomSizeH = rnd.Next(0, 200 - randomSizeH);
+            lblWallDown2.Size = new Size(lblWallDown2.Size.Width, randomSizeH);
+            lblWallDown2.Location = new Point(610, panelGameZone.Size.Height - randomSizeH);
+
+            //3 UP
+            randomSizeH = rnd.Next(0, 200);
+            lblWallUp3.Size = new Size(lblWallDown3.Size.Width, randomSizeH);
+            lblWallUp3.Location = new Point(732, 0);
+            //3 Down
+            randomSizeH = rnd.Next(0, 200 - randomSizeH);
+            lblWallDown3.Size = new Size(lblWallDown3.Size.Width, randomSizeH);
+            lblWallDown3.Location = new Point(732, panelGameZone.Size.Height - randomSizeH);
+
+            //4 UP
+            randomSizeH = rnd.Next(0, 200);
+            lblWallUp4.Size = new Size(lblWallDown4.Size.Width, randomSizeH);
+            lblWallUp4.Location = new Point(854, 0);
+            //4 Down
+            randomSizeH = rnd.Next(0, 200 - randomSizeH);
+            lblWallDown4.Size = new Size(lblWallDown4.Size.Width, randomSizeH);
+            lblWallDown4.Location = new Point(854, panelGameZone.Size.Height - randomSizeH);
+        }
+        private bool GoUpp = false;
+        private bool GoDown = false;
+        private int Score;
+        private void lblStartGame_Click(object sender, EventArgs e)
+        {
+            Score = 0;
+            SetLocationAndHeightToColumnsInGame();
+            timer5.Start();
+        }
+
+
+        private void lblUP_MouseDown(object sender, MouseEventArgs e)
+        {
+            GoUpp = true;
+            timer4.Start();
+        }
+        private void lblUP_MouseUp(object sender, MouseEventArgs e)
+        {
+            GoUpp = false;
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            if (GoUpp == true && lblBoxGame.Top != 0)
+                lblBoxGame.Top -= 1;
+            else if (GoDown == true && lblBoxGame.Top != (panelGameZone.Size.Height - lblBoxGame.Size.Height))
+                lblBoxGame.Top += 1;
+            timer4.Interval = 1;
+        }
+
+        private void lblDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            GoDown = true;
+            timer4.Start();
+        }
+
+        private void lblDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            GoDown = false;
+        }
+        private void timer5_Tick(object sender, EventArgs e)
+        {
+            int speed;
+            if (Score < 1000)
+                speed = 1;
+            else if (Score < 2000)
+                speed = 2;
+            else if (Score < 3000)
+                speed = 3;
+            else
+                speed = 4;
+
+
+            lblScore.Text = "Score : " + Score;
+            if (lblWallDown1.Left + lblWallDown1.Size.Width > 0 && lblWallUp1.Left + lblWallUp1.Size.Width > 0)
+            {
+                lblWallDown1.Left -= speed;
+                lblWallUp1.Left -= speed;
+            }
+            else
+            {
+                int randomSizeH = rnd.Next(0, 200);
+                lblWallUp1.Size = new Size(lblWallDown1.Size.Width, randomSizeH);
+                lblWallUp1.Location = new Point(488, 0);
+                randomSizeH = rnd.Next(0, 200 - randomSizeH);
+                lblWallDown1.Size = new Size(lblWallDown1.Size.Width, randomSizeH);
+                lblWallDown1.Location = new Point(488, panelGameZone.Size.Height - randomSizeH);
+            }
+
+            if (lblWallDown2.Left + lblWallDown2.Size.Width > 0 && lblWallUp2.Left + lblWallUp2.Size.Width > 0)
+            {
+                lblWallDown2.Left -= speed;
+                lblWallUp2.Left -= speed;
+            }
+            else
+            {
+                int randomSizeH = rnd.Next(0, 200);
+                lblWallUp2.Size = new Size(lblWallDown2.Size.Width, randomSizeH);
+                lblWallUp2.Location = new Point(488, 0);
+                randomSizeH = rnd.Next(0, 200 - randomSizeH);
+                lblWallDown2.Size = new Size(lblWallDown2.Size.Width, randomSizeH);
+                lblWallDown2.Location = new Point(488, panelGameZone.Size.Height - randomSizeH);
+            }
+
+            if (lblWallDown3.Left + lblWallDown3.Size.Width > 0 && lblWallUp3.Left + lblWallUp3.Size.Width > 0)
+            {
+                lblWallDown3.Left -= speed;
+                lblWallUp3.Left -= speed;
+            }
+            else
+            {
+                int randomSizeH = rnd.Next(0, 200);
+                lblWallUp3.Size = new Size(lblWallDown3.Size.Width, randomSizeH);
+                lblWallUp3.Location = new Point(488, 0);
+                randomSizeH = rnd.Next(0, 200 - randomSizeH);
+                lblWallDown3.Size = new Size(lblWallDown3.Size.Width, randomSizeH);
+                lblWallDown3.Location = new Point(488, panelGameZone.Size.Height - randomSizeH);
+            }
+
+            if (lblWallDown4.Left + lblWallDown4.Size.Width > 0 && lblWallUp4.Left + lblWallUp4.Size.Width > 0)
+            {
+                lblWallDown4.Left -= speed;
+                lblWallUp4.Left -= speed;
+            }
+            else
+            {
+                //4 UP
+                int randomSizeH = rnd.Next(0, 200);
+                lblWallUp4.Size = new Size(lblWallDown4.Size.Width, randomSizeH);
+                lblWallUp4.Location = new Point(488, 0);
+                //4 Down
+                randomSizeH = rnd.Next(0, 200 - randomSizeH);
+                lblWallDown4.Size = new Size(lblWallDown4.Size.Width, randomSizeH);
+                lblWallDown4.Location = new Point(488, panelGameZone.Size.Height - randomSizeH);
+            }
+            //if(lblWallDown1.Left+lblWallDown1.Size.Width!=0 && lblWallUp1.Left + lblWallUp1.Size.Width != 0)
+            //{
+            //    lblWallDown1.Left -= 1;
+            //    lblWallUp1.Left -= 1;
+            //    if (lblBoxGame.Bounds.IntersectsWith(lblWallUp1.Bounds)|| lblBoxGame.Bounds.IntersectsWith(lblWallDown1.Bounds))
+            //    {
+            //        timer5.Stop();
+            //    }
+            //}
+            //else
+            //{
+            //    SetLocationAndHeightToColumnsInGame();
+            //}
+
+            if (lblBoxGame.Bounds.IntersectsWith(lblWallUp1.Bounds)
+                || lblBoxGame.Bounds.IntersectsWith(lblWallDown1.Bounds)
+                || lblBoxGame.Bounds.IntersectsWith(lblWallUp2.Bounds)
+                || lblBoxGame.Bounds.IntersectsWith(lblWallDown2.Bounds)
+                || lblBoxGame.Bounds.IntersectsWith(lblWallUp3.Bounds)
+                || lblBoxGame.Bounds.IntersectsWith(lblWallDown3.Bounds)
+                || lblBoxGame.Bounds.IntersectsWith(lblWallUp4.Bounds)
+                || lblBoxGame.Bounds.IntersectsWith(lblWallDown4.Bounds))
+            {
+                timer5.Stop();
+                MessageBox.Show(Score.ToString());
+            }
+            Score++;
+                timer5.Interval = 1;
+        }
+
+        private void timer6_Tick(object sender, EventArgs e)
+        {
+            if (panelGame.Left > 250)
+                panelGame.Left -= 5;
+            timer6.Interval = 1;
         }
     }
 }
