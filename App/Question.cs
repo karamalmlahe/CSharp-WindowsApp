@@ -13,9 +13,9 @@ namespace App
         private string _Answer2;
         private string _Answer3;
         private string _Answer4;
-        private int _Correct;
+        private string _Correct;
 
-        public Question(string Question, string Answer1, string Answer2, string Answer3, string Answer4, int Correct)
+        public Question(string Question, string Answer1, string Answer2, string Answer3, string Answer4, string Correct)
         {
             this._Question = Question;
             this._Answer1 = Answer1;
@@ -44,7 +44,7 @@ namespace App
         {
             return this._Answer4;
         }
-        public int GetCorrect()
+        public string GetCorrect()
         {
             return this._Correct;
         }

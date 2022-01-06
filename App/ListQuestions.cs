@@ -32,7 +32,7 @@ namespace App
                 while (mySqlDataReader.Read())
                 {
 
-                    _Questions.Add(new Question(mySqlDataReader[0].ToString(), mySqlDataReader[1].ToString(), mySqlDataReader[2].ToString(), mySqlDataReader[3].ToString(), mySqlDataReader[4].ToString(), int.Parse(mySqlDataReader[5].ToString())));
+                    _Questions.Add(new Question(mySqlDataReader[0].ToString(), mySqlDataReader[1].ToString(), mySqlDataReader[2].ToString(), mySqlDataReader[3].ToString(), mySqlDataReader[4].ToString(), mySqlDataReader[5].ToString()));
                 }
                 mySqlDataReader.Close();
                 mySqlConnection.Close();
@@ -64,7 +64,7 @@ namespace App
         {
             return _Questions[n].GetAnswer4();
         }
-        public int GetCorrect(int n)
+        public string GetCorrect(int n)
         {
             return _Questions[n].GetCorrect();
         }
