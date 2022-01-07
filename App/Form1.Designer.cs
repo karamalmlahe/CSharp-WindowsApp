@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBtnExam = new System.Windows.Forms.Label();
             this.lblMenu = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
@@ -40,62 +36,10 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblBtnGame = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txtBoxName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblStart = new System.Windows.Forms.Label();
-            this.panelName = new System.Windows.Forms.Panel();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.panelQuestion = new System.Windows.Forms.Panel();
-            this.lblBack = new System.Windows.Forms.Label();
-            this.lblQNumber = new System.Windows.Forms.Label();
-            this.lblline2 = new System.Windows.Forms.Label();
-            this.radioBtnAnswer2 = new System.Windows.Forms.RadioButton();
-            this.radioBtnAnswer1 = new System.Windows.Forms.RadioButton();
-            this.radioBtnAnswer3 = new System.Windows.Forms.RadioButton();
-            this.lblNext = new System.Windows.Forms.Label();
-            this.radioBtnAnswer4 = new System.Windows.Forms.RadioButton();
-            this.lblQuestion = new System.Windows.Forms.Label();
             this.lblBtnIMGExam = new System.Windows.Forms.Label();
             this.lblBtnTeacher = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Question = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Your_Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Correct_Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelResultExam = new System.Windows.Forms.Panel();
-            this.lblTryAgainExam = new System.Windows.Forms.Label();
-            this.lblResultExamColor = new System.Windows.Forms.Label();
-            this.lblWrongAnswers = new System.Windows.Forms.Label();
-            this.lblResultExam = new System.Windows.Forms.Label();
-            this.lblEndTime = new System.Windows.Forms.Label();
-            this.lblTimeStart = new System.Windows.Forms.Label();
-            this.lblDateDay = new System.Windows.Forms.Label();
-            this.lblName2 = new System.Windows.Forms.Label();
-            this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.panelGame = new System.Windows.Forms.Panel();
-            this.lblScore = new System.Windows.Forms.Label();
-            this.lblDown = new System.Windows.Forms.Label();
-            this.lblUP = new System.Windows.Forms.Label();
-            this.panelGameZone = new System.Windows.Forms.Panel();
-            this.lblWallDown4 = new System.Windows.Forms.Label();
-            this.lblWallUp4 = new System.Windows.Forms.Label();
-            this.lblWallDown3 = new System.Windows.Forms.Label();
-            this.lblWallUp3 = new System.Windows.Forms.Label();
-            this.lblWallDown2 = new System.Windows.Forms.Label();
-            this.lblWallUp2 = new System.Windows.Forms.Label();
-            this.lblWallDown1 = new System.Windows.Forms.Label();
-            this.lblWallUp1 = new System.Windows.Forms.Label();
-            this.lblBoxGame = new System.Windows.Forms.Label();
-            this.lblStartGame = new System.Windows.Forms.Label();
-            this.timer4 = new System.Windows.Forms.Timer(this.components);
-            this.timer5 = new System.Windows.Forms.Timer(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.timer6 = new System.Windows.Forms.Timer(this.components);
-            this.panelName.SuspendLayout();
-            this.panelQuestion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panelResultExam.SuspendLayout();
-            this.panelGame.SuspendLayout();
-            this.panelGameZone.SuspendLayout();
+            this.panelForm2 = new System.Windows.Forms.Panel();
+            this.timerForm = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblBtnExam
@@ -123,14 +67,13 @@
             this.lblMenu.Size = new System.Drawing.Size(293, 499);
             this.lblMenu.TabIndex = 1;
             this.lblMenu.Text = "Menu";
-            this.lblMenu.Click += new System.EventHandler(this.lblMenu_Click);
             // 
             // lblClose
             // 
             this.lblClose.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.lblClose.Location = new System.Drawing.Point(268, -1);
+            this.lblClose.Location = new System.Drawing.Point(268, 0);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(25, 23);
             this.lblClose.TabIndex = 2;
@@ -180,180 +123,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // txtBoxName
-            // 
-            this.txtBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.txtBoxName.Location = new System.Drawing.Point(148, 13);
-            this.txtBoxName.Multiline = true;
-            this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(178, 24);
-            this.txtBoxName.TabIndex = 5;
-            this.txtBoxName.Text = "Karam";
-            // 
-            // lblName
-            // 
-            this.lblName.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.lblName.Font = new System.Drawing.Font("Tw Cen MT", 15.75F);
-            this.lblName.Location = new System.Drawing.Point(46, 13);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(100, 24);
-            this.lblName.TabIndex = 9;
-            this.lblName.Text = "Name : ";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblStart
-            // 
-            this.lblStart.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblStart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblStart.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStart.ForeColor = System.Drawing.Color.White;
-            this.lblStart.Location = new System.Drawing.Point(328, 13);
-            this.lblStart.Name = "lblStart";
-            this.lblStart.Size = new System.Drawing.Size(100, 24);
-            this.lblStart.TabIndex = 10;
-            this.lblStart.Text = "Start";
-            this.lblStart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblStart.Click += new System.EventHandler(this.lblStart_Click);
-            // 
-            // panelName
-            // 
-            this.panelName.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelName.Controls.Add(this.lblStart);
-            this.panelName.Controls.Add(this.txtBoxName);
-            this.panelName.Controls.Add(this.lblName);
-            this.panelName.Location = new System.Drawing.Point(304, 526);
-            this.panelName.Name = "panelName";
-            this.panelName.Size = new System.Drawing.Size(470, 47);
-            this.panelName.TabIndex = 13;
-            // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // panelQuestion
-            // 
-            this.panelQuestion.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelQuestion.Controls.Add(this.lblBack);
-            this.panelQuestion.Controls.Add(this.lblQNumber);
-            this.panelQuestion.Controls.Add(this.lblline2);
-            this.panelQuestion.Controls.Add(this.radioBtnAnswer2);
-            this.panelQuestion.Controls.Add(this.radioBtnAnswer1);
-            this.panelQuestion.Controls.Add(this.radioBtnAnswer3);
-            this.panelQuestion.Controls.Add(this.lblNext);
-            this.panelQuestion.Controls.Add(this.radioBtnAnswer4);
-            this.panelQuestion.Controls.Add(this.lblQuestion);
-            this.panelQuestion.Enabled = false;
-            this.panelQuestion.Location = new System.Drawing.Point(304, 579);
-            this.panelQuestion.Name = "panelQuestion";
-            this.panelQuestion.Size = new System.Drawing.Size(470, 299);
-            this.panelQuestion.TabIndex = 12;
-            // 
-            // lblBack
-            // 
-            this.lblBack.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBack.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBack.ForeColor = System.Drawing.Color.White;
-            this.lblBack.Location = new System.Drawing.Point(5, 250);
-            this.lblBack.Name = "lblBack";
-            this.lblBack.Size = new System.Drawing.Size(125, 43);
-            this.lblBack.TabIndex = 15;
-            this.lblBack.Text = "Back";
-            this.lblBack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblBack.Click += new System.EventHandler(this.lblBack_Click);
-            // 
-            // lblQNumber
-            // 
-            this.lblQNumber.AutoSize = true;
-            this.lblQNumber.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQNumber.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblQNumber.Location = new System.Drawing.Point(7, 5);
-            this.lblQNumber.Name = "lblQNumber";
-            this.lblQNumber.Size = new System.Drawing.Size(102, 24);
-            this.lblQNumber.TabIndex = 14;
-            this.lblQNumber.Text = "Question 0";
-            // 
-            // lblline2
-            // 
-            this.lblline2.BackColor = System.Drawing.SystemColors.GrayText;
-            this.lblline2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblline2.Location = new System.Drawing.Point(60, 81);
-            this.lblline2.Name = "lblline2";
-            this.lblline2.Size = new System.Drawing.Size(350, 1);
-            this.lblline2.TabIndex = 13;
-            // 
-            // radioBtnAnswer2
-            // 
-            this.radioBtnAnswer2.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnAnswer2.Location = new System.Drawing.Point(60, 125);
-            this.radioBtnAnswer2.Name = "radioBtnAnswer2";
-            this.radioBtnAnswer2.Size = new System.Drawing.Size(350, 30);
-            this.radioBtnAnswer2.TabIndex = 2;
-            this.radioBtnAnswer2.TabStop = true;
-            this.radioBtnAnswer2.Text = "radioButton2";
-            this.radioBtnAnswer2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioBtnAnswer2.UseVisualStyleBackColor = true;
-            // 
-            // radioBtnAnswer1
-            // 
-            this.radioBtnAnswer1.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnAnswer1.Location = new System.Drawing.Point(60, 95);
-            this.radioBtnAnswer1.Name = "radioBtnAnswer1";
-            this.radioBtnAnswer1.Size = new System.Drawing.Size(350, 30);
-            this.radioBtnAnswer1.TabIndex = 1;
-            this.radioBtnAnswer1.TabStop = true;
-            this.radioBtnAnswer1.Text = "radioButton1";
-            this.radioBtnAnswer1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioBtnAnswer1.UseVisualStyleBackColor = true;
-            // 
-            // radioBtnAnswer3
-            // 
-            this.radioBtnAnswer3.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnAnswer3.Location = new System.Drawing.Point(60, 155);
-            this.radioBtnAnswer3.Name = "radioBtnAnswer3";
-            this.radioBtnAnswer3.Size = new System.Drawing.Size(350, 30);
-            this.radioBtnAnswer3.TabIndex = 3;
-            this.radioBtnAnswer3.TabStop = true;
-            this.radioBtnAnswer3.Text = "radioButton3";
-            this.radioBtnAnswer3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioBtnAnswer3.UseVisualStyleBackColor = true;
-            // 
-            // lblNext
-            // 
-            this.lblNext.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblNext.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNext.ForeColor = System.Drawing.Color.White;
-            this.lblNext.Location = new System.Drawing.Point(340, 250);
-            this.lblNext.Name = "lblNext";
-            this.lblNext.Size = new System.Drawing.Size(125, 43);
-            this.lblNext.TabIndex = 11;
-            this.lblNext.Text = "Next";
-            this.lblNext.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblNext.Click += new System.EventHandler(this.lblNext_Click);
-            // 
-            // radioBtnAnswer4
-            // 
-            this.radioBtnAnswer4.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnAnswer4.Location = new System.Drawing.Point(60, 185);
-            this.radioBtnAnswer4.Name = "radioBtnAnswer4";
-            this.radioBtnAnswer4.Size = new System.Drawing.Size(350, 30);
-            this.radioBtnAnswer4.TabIndex = 4;
-            this.radioBtnAnswer4.TabStop = true;
-            this.radioBtnAnswer4.Text = "radioButton4";
-            this.radioBtnAnswer4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioBtnAnswer4.UseVisualStyleBackColor = true;
-            // 
-            // lblQuestion
-            // 
-            this.lblQuestion.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuestion.Location = new System.Drawing.Point(60, 52);
-            this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(350, 27);
-            this.lblQuestion.TabIndex = 0;
-            this.lblQuestion.Text = "QQQQQ";
-            this.lblQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lblBtnIMGExam
             // 
             this.lblBtnIMGExam.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -382,380 +151,38 @@
             this.lblBtnTeacher.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblBtnTeacher.Click += new System.EventHandler(this.lblBtnTeacher_Click);
             // 
-            // dataGridView1
+            // panelForm2
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView1.ColumnHeadersHeight = 30;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Question,
-            this.Column_Your_Answer,
-            this.Column_Correct_Answer});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.Desktop;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 153);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(546, 295);
-            this.dataGridView1.TabIndex = 16;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.panelForm2.BackColor = System.Drawing.Color.OldLace;
+            this.panelForm2.Location = new System.Drawing.Point(233, 525);
+            this.panelForm2.Name = "panelForm2";
+            this.panelForm2.Size = new System.Drawing.Size(613, 494);
+            this.panelForm2.TabIndex = 19;
             // 
-            // Question
+            // timerForm
             // 
-            this.Question.HeaderText = "Question";
-            this.Question.Name = "Question";
-            this.Question.ReadOnly = true;
-            this.Question.Width = 200;
-            // 
-            // Column_Your_Answer
-            // 
-            this.Column_Your_Answer.HeaderText = "Your Answer";
-            this.Column_Your_Answer.Name = "Column_Your_Answer";
-            this.Column_Your_Answer.ReadOnly = true;
-            this.Column_Your_Answer.Width = 150;
-            // 
-            // Column_Correct_Answer
-            // 
-            this.Column_Correct_Answer.HeaderText = "Correct Answer";
-            this.Column_Correct_Answer.Name = "Column_Correct_Answer";
-            this.Column_Correct_Answer.ReadOnly = true;
-            this.Column_Correct_Answer.Width = 150;
-            // 
-            // panelResultExam
-            // 
-            this.panelResultExam.BackColor = System.Drawing.Color.White;
-            this.panelResultExam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelResultExam.Controls.Add(this.lblTryAgainExam);
-            this.panelResultExam.Controls.Add(this.lblResultExamColor);
-            this.panelResultExam.Controls.Add(this.lblWrongAnswers);
-            this.panelResultExam.Controls.Add(this.lblResultExam);
-            this.panelResultExam.Controls.Add(this.lblEndTime);
-            this.panelResultExam.Controls.Add(this.lblTimeStart);
-            this.panelResultExam.Controls.Add(this.lblDateDay);
-            this.panelResultExam.Controls.Add(this.lblName2);
-            this.panelResultExam.Controls.Add(this.dataGridView1);
-            this.panelResultExam.Location = new System.Drawing.Point(948, 34);
-            this.panelResultExam.Name = "panelResultExam";
-            this.panelResultExam.Size = new System.Drawing.Size(569, 470);
-            this.panelResultExam.TabIndex = 17;
-            // 
-            // lblTryAgainExam
-            // 
-            this.lblTryAgainExam.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblTryAgainExam.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblTryAgainExam.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTryAgainExam.ForeColor = System.Drawing.Color.White;
-            this.lblTryAgainExam.Location = new System.Drawing.Point(230, 431);
-            this.lblTryAgainExam.Name = "lblTryAgainExam";
-            this.lblTryAgainExam.Size = new System.Drawing.Size(107, 29);
-            this.lblTryAgainExam.TabIndex = 11;
-            this.lblTryAgainExam.Text = "Try Again";
-            this.lblTryAgainExam.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTryAgainExam.Click += new System.EventHandler(this.lblTryAgainExam_Click);
-            // 
-            // lblResultExamColor
-            // 
-            this.lblResultExamColor.AutoSize = true;
-            this.lblResultExamColor.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultExamColor.Location = new System.Drawing.Point(486, 123);
-            this.lblResultExamColor.Name = "lblResultExamColor";
-            this.lblResultExamColor.Size = new System.Drawing.Size(29, 19);
-            this.lblResultExamColor.TabIndex = 23;
-            this.lblResultExamColor.Text = ".....";
-            // 
-            // lblWrongAnswers
-            // 
-            this.lblWrongAnswers.AutoSize = true;
-            this.lblWrongAnswers.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWrongAnswers.Location = new System.Drawing.Point(13, 123);
-            this.lblWrongAnswers.Name = "lblWrongAnswers";
-            this.lblWrongAnswers.Size = new System.Drawing.Size(121, 19);
-            this.lblWrongAnswers.TabIndex = 22;
-            this.lblWrongAnswers.Text = "Wrong Answers : ";
-            // 
-            // lblResultExam
-            // 
-            this.lblResultExam.AutoSize = true;
-            this.lblResultExam.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultExam.Location = new System.Drawing.Point(436, 123);
-            this.lblResultExam.Name = "lblResultExam";
-            this.lblResultExam.Size = new System.Drawing.Size(52, 19);
-            this.lblResultExam.TabIndex = 21;
-            this.lblResultExam.Text = "Result :";
-            // 
-            // lblEndTime
-            // 
-            this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEndTime.Location = new System.Drawing.Point(23, 88);
-            this.lblEndTime.Name = "lblEndTime";
-            this.lblEndTime.Size = new System.Drawing.Size(73, 19);
-            this.lblEndTime.TabIndex = 20;
-            this.lblEndTime.Text = "Ending in :";
-            // 
-            // lblTimeStart
-            // 
-            this.lblTimeStart.AutoSize = true;
-            this.lblTimeStart.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeStart.Location = new System.Drawing.Point(23, 65);
-            this.lblTimeStart.Name = "lblTimeStart";
-            this.lblTimeStart.Size = new System.Drawing.Size(80, 19);
-            this.lblTimeStart.TabIndex = 19;
-            this.lblTimeStart.Text = "Starting in :";
-            // 
-            // lblDateDay
-            // 
-            this.lblDateDay.AutoSize = true;
-            this.lblDateDay.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateDay.Location = new System.Drawing.Point(377, 20);
-            this.lblDateDay.Name = "lblDateDay";
-            this.lblDateDay.Size = new System.Drawing.Size(63, 24);
-            this.lblDateDay.TabIndex = 18;
-            this.lblDateDay.Text = "Date :";
-            // 
-            // lblName2
-            // 
-            this.lblName2.AutoSize = true;
-            this.lblName2.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName2.Location = new System.Drawing.Point(13, 20);
-            this.lblName2.Name = "lblName2";
-            this.lblName2.Size = new System.Drawing.Size(78, 24);
-            this.lblName2.TabIndex = 17;
-            this.lblName2.Text = "Name : ";
-            // 
-            // timer3
-            // 
-            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
-            // 
-            // panelGame
-            // 
-            this.panelGame.Controls.Add(this.lblScore);
-            this.panelGame.Controls.Add(this.lblDown);
-            this.panelGame.Controls.Add(this.lblUP);
-            this.panelGame.Controls.Add(this.panelGameZone);
-            this.panelGame.Controls.Add(this.lblStartGame);
-            this.panelGame.Location = new System.Drawing.Point(1523, 34);
-            this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(584, 449);
-            this.panelGame.TabIndex = 18;
-            // 
-            // lblScore
-            // 
-            this.lblScore.Font = new System.Drawing.Font("Tw Cen MT", 20.25F);
-            this.lblScore.Location = new System.Drawing.Point(3, 1);
-            this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(187, 30);
-            this.lblScore.TabIndex = 9;
-            this.lblScore.Text = "Score :";
-            this.lblScore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblDown
-            // 
-            this.lblDown.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblDown.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblDown.Font = new System.Drawing.Font("Tw Cen MT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDown.ForeColor = System.Drawing.Color.Black;
-            this.lblDown.Location = new System.Drawing.Point(305, 337);
-            this.lblDown.Name = "lblDown";
-            this.lblDown.Size = new System.Drawing.Size(233, 39);
-            this.lblDown.TabIndex = 22;
-            this.lblDown.Text = "Down";
-            this.lblDown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblDown_MouseDown);
-            this.lblDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblDown_MouseUp);
-            // 
-            // lblUP
-            // 
-            this.lblUP.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblUP.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblUP.Font = new System.Drawing.Font("Tw Cen MT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUP.ForeColor = System.Drawing.Color.Black;
-            this.lblUP.Location = new System.Drawing.Point(53, 337);
-            this.lblUP.Name = "lblUP";
-            this.lblUP.Size = new System.Drawing.Size(233, 39);
-            this.lblUP.TabIndex = 21;
-            this.lblUP.Text = "UP";
-            this.lblUP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblUP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblUP_MouseDown);
-            this.lblUP.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblUP_MouseUp);
-            // 
-            // panelGameZone
-            // 
-            this.panelGameZone.BackColor = System.Drawing.Color.White;
-            this.panelGameZone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelGameZone.Controls.Add(this.lblWallDown4);
-            this.panelGameZone.Controls.Add(this.lblWallUp4);
-            this.panelGameZone.Controls.Add(this.lblWallDown3);
-            this.panelGameZone.Controls.Add(this.lblWallUp3);
-            this.panelGameZone.Controls.Add(this.lblWallDown2);
-            this.panelGameZone.Controls.Add(this.lblWallUp2);
-            this.panelGameZone.Controls.Add(this.lblWallDown1);
-            this.panelGameZone.Controls.Add(this.lblWallUp1);
-            this.panelGameZone.Controls.Add(this.lblBoxGame);
-            this.panelGameZone.Location = new System.Drawing.Point(53, 40);
-            this.panelGameZone.Name = "panelGameZone";
-            this.panelGameZone.Size = new System.Drawing.Size(488, 294);
-            this.panelGameZone.TabIndex = 20;
-            // 
-            // lblWallDown4
-            // 
-            this.lblWallDown4.BackColor = System.Drawing.Color.Maroon;
-            this.lblWallDown4.Location = new System.Drawing.Point(854, 165);
-            this.lblWallDown4.Name = "lblWallDown4";
-            this.lblWallDown4.Size = new System.Drawing.Size(34, 128);
-            this.lblWallDown4.TabIndex = 8;
-            // 
-            // lblWallUp4
-            // 
-            this.lblWallUp4.BackColor = System.Drawing.Color.Maroon;
-            this.lblWallUp4.Location = new System.Drawing.Point(854, 0);
-            this.lblWallUp4.Name = "lblWallUp4";
-            this.lblWallUp4.Size = new System.Drawing.Size(34, 128);
-            this.lblWallUp4.TabIndex = 7;
-            // 
-            // lblWallDown3
-            // 
-            this.lblWallDown3.BackColor = System.Drawing.Color.Maroon;
-            this.lblWallDown3.Location = new System.Drawing.Point(732, 165);
-            this.lblWallDown3.Name = "lblWallDown3";
-            this.lblWallDown3.Size = new System.Drawing.Size(34, 128);
-            this.lblWallDown3.TabIndex = 6;
-            // 
-            // lblWallUp3
-            // 
-            this.lblWallUp3.BackColor = System.Drawing.Color.Maroon;
-            this.lblWallUp3.Location = new System.Drawing.Point(732, 0);
-            this.lblWallUp3.Name = "lblWallUp3";
-            this.lblWallUp3.Size = new System.Drawing.Size(34, 128);
-            this.lblWallUp3.TabIndex = 5;
-            // 
-            // lblWallDown2
-            // 
-            this.lblWallDown2.BackColor = System.Drawing.Color.Maroon;
-            this.lblWallDown2.Location = new System.Drawing.Point(610, 165);
-            this.lblWallDown2.Name = "lblWallDown2";
-            this.lblWallDown2.Size = new System.Drawing.Size(34, 128);
-            this.lblWallDown2.TabIndex = 4;
-            // 
-            // lblWallUp2
-            // 
-            this.lblWallUp2.BackColor = System.Drawing.Color.Maroon;
-            this.lblWallUp2.Location = new System.Drawing.Point(610, 0);
-            this.lblWallUp2.Name = "lblWallUp2";
-            this.lblWallUp2.Size = new System.Drawing.Size(34, 128);
-            this.lblWallUp2.TabIndex = 3;
-            // 
-            // lblWallDown1
-            // 
-            this.lblWallDown1.BackColor = System.Drawing.Color.Maroon;
-            this.lblWallDown1.Location = new System.Drawing.Point(488, 165);
-            this.lblWallDown1.Name = "lblWallDown1";
-            this.lblWallDown1.Size = new System.Drawing.Size(34, 128);
-            this.lblWallDown1.TabIndex = 2;
-            // 
-            // lblWallUp1
-            // 
-            this.lblWallUp1.BackColor = System.Drawing.Color.Maroon;
-            this.lblWallUp1.Location = new System.Drawing.Point(488, 0);
-            this.lblWallUp1.Name = "lblWallUp1";
-            this.lblWallUp1.Size = new System.Drawing.Size(34, 128);
-            this.lblWallUp1.TabIndex = 1;
-            // 
-            // lblBoxGame
-            // 
-            this.lblBoxGame.BackColor = System.Drawing.Color.DarkOrange;
-            this.lblBoxGame.Location = new System.Drawing.Point(82, 133);
-            this.lblBoxGame.Name = "lblBoxGame";
-            this.lblBoxGame.Size = new System.Drawing.Size(22, 22);
-            this.lblBoxGame.TabIndex = 0;
-            // 
-            // lblStartGame
-            // 
-            this.lblStartGame.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblStartGame.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblStartGame.Font = new System.Drawing.Font("Tw Cen MT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartGame.ForeColor = System.Drawing.Color.Black;
-            this.lblStartGame.Location = new System.Drawing.Point(166, 403);
-            this.lblStartGame.Name = "lblStartGame";
-            this.lblStartGame.Size = new System.Drawing.Size(233, 39);
-            this.lblStartGame.TabIndex = 19;
-            this.lblStartGame.Text = "Start Game";
-            this.lblStartGame.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblStartGame.Click += new System.EventHandler(this.lblStartGame_Click);
-            // 
-            // timer4
-            // 
-            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
-            // 
-            // timer5
-            // 
-            this.timer5.Tick += new System.EventHandler(this.timer5_Tick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // timer6
-            // 
-            this.timer6.Tick += new System.EventHandler(this.timer6_Tick);
+            this.timerForm.Tick += new System.EventHandler(this.timerForm_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(293, 518);
-            this.Controls.Add(this.panelGame);
-            this.Controls.Add(this.panelResultExam);
-            this.Controls.Add(this.lblBtnTeacher);
-            this.Controls.Add(this.lblBtnIMGExam);
-            this.Controls.Add(this.panelQuestion);
-            this.Controls.Add(this.panelName);
+            this.ClientSize = new System.Drawing.Size(289, 519);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblBtnTeacher);
+            this.Controls.Add(this.lblBtnIMGExam);
             this.Controls.Add(this.lblBtnGame);
             this.Controls.Add(this.lblBtnExam);
             this.Controls.Add(this.lblLine);
             this.Controls.Add(this.lblMenu);
+            this.Controls.Add(this.panelForm2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panelName.ResumeLayout(false);
-            this.panelName.PerformLayout();
-            this.panelQuestion.ResumeLayout(false);
-            this.panelQuestion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panelResultExam.ResumeLayout(false);
-            this.panelResultExam.PerformLayout();
-            this.panelGame.ResumeLayout(false);
-            this.panelGameZone.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -769,56 +196,10 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblBtnGame;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox txtBoxName;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblStart;
-        private System.Windows.Forms.Panel panelName;
-        private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Panel panelQuestion;
-        private System.Windows.Forms.Label lblBack;
-        private System.Windows.Forms.Label lblQNumber;
-        private System.Windows.Forms.Label lblline2;
-        private System.Windows.Forms.RadioButton radioBtnAnswer2;
-        private System.Windows.Forms.RadioButton radioBtnAnswer1;
-        private System.Windows.Forms.RadioButton radioBtnAnswer3;
-        private System.Windows.Forms.Label lblNext;
-        private System.Windows.Forms.RadioButton radioBtnAnswer4;
-        private System.Windows.Forms.Label lblQuestion;
         private System.Windows.Forms.Label lblBtnIMGExam;
         private System.Windows.Forms.Label lblBtnTeacher;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Question;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Your_Answer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Correct_Answer;
-        private System.Windows.Forms.Panel panelResultExam;
-        private System.Windows.Forms.Label lblName2;
-        private System.Windows.Forms.Label lblEndTime;
-        private System.Windows.Forms.Label lblTimeStart;
-        private System.Windows.Forms.Label lblDateDay;
-        private System.Windows.Forms.Label lblWrongAnswers;
-        private System.Windows.Forms.Label lblResultExam;
-        private System.Windows.Forms.Label lblResultExamColor;
-        private System.Windows.Forms.Timer timer3;
-        private System.Windows.Forms.Label lblTryAgainExam;
-        private System.Windows.Forms.Panel panelGame;
-        private System.Windows.Forms.Panel panelGameZone;
-        private System.Windows.Forms.Label lblStartGame;
-        private System.Windows.Forms.Label lblDown;
-        private System.Windows.Forms.Label lblUP;
-        private System.Windows.Forms.Label lblBoxGame;
-        private System.Windows.Forms.Timer timer4;
-        private System.Windows.Forms.Label lblWallDown1;
-        private System.Windows.Forms.Label lblWallUp1;
-        private System.Windows.Forms.Timer timer5;
-        private System.Windows.Forms.Label lblWallDown4;
-        private System.Windows.Forms.Label lblWallUp4;
-        private System.Windows.Forms.Label lblWallDown3;
-        private System.Windows.Forms.Label lblWallUp3;
-        private System.Windows.Forms.Label lblWallDown2;
-        private System.Windows.Forms.Label lblWallUp2;
-        private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Timer timer6;
+        private System.Windows.Forms.Panel panelForm2;
+        private System.Windows.Forms.Timer timerForm;
     }
 }
 
