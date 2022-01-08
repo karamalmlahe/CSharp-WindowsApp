@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelQuestion = new System.Windows.Forms.Panel();
+            this.lblEndT = new System.Windows.Forms.Label();
             this.lblBack = new System.Windows.Forms.Label();
             this.lblQNumber = new System.Windows.Forms.Label();
             this.lblline2 = new System.Windows.Forms.Label();
@@ -61,9 +62,9 @@
             this.Question = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Your_Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Correct_Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimerPanelName = new System.Windows.Forms.Timer(this.components);
             this.timerPanelQuestion = new System.Windows.Forms.Timer(this.components);
             this.timerExamResult = new System.Windows.Forms.Timer(this.components);
+            this.timerTimeToEnd = new System.Windows.Forms.Timer(this.components);
             this.panelQuestion.SuspendLayout();
             this.panelName.SuspendLayout();
             this.panelResultExam.SuspendLayout();
@@ -73,6 +74,7 @@
             // panelQuestion
             // 
             this.panelQuestion.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelQuestion.Controls.Add(this.lblEndT);
             this.panelQuestion.Controls.Add(this.lblBack);
             this.panelQuestion.Controls.Add(this.lblQNumber);
             this.panelQuestion.Controls.Add(this.lblline2);
@@ -82,11 +84,22 @@
             this.panelQuestion.Controls.Add(this.lblNext);
             this.panelQuestion.Controls.Add(this.radioBtnAnswer4);
             this.panelQuestion.Controls.Add(this.lblQuestion);
-            this.panelQuestion.Location = new System.Drawing.Point(71, 547);
+            this.panelQuestion.Location = new System.Drawing.Point(161, 547);
             this.panelQuestion.Name = "panelQuestion";
             this.panelQuestion.Size = new System.Drawing.Size(470, 299);
             this.panelQuestion.TabIndex = 14;
             this.panelQuestion.Visible = false;
+            // 
+            // lblEndT
+            // 
+            this.lblEndT.AutoSize = true;
+            this.lblEndT.Font = new System.Drawing.Font("Tw Cen MT", 15.75F);
+            this.lblEndT.ForeColor = System.Drawing.Color.Maroon;
+            this.lblEndT.Location = new System.Drawing.Point(328, 5);
+            this.lblEndT.Name = "lblEndT";
+            this.lblEndT.Size = new System.Drawing.Size(71, 24);
+            this.lblEndT.TabIndex = 19;
+            this.lblEndT.Text = "End in :";
             // 
             // lblBack
             // 
@@ -200,7 +213,7 @@
             this.panelName.Controls.Add(this.lblStart);
             this.panelName.Controls.Add(this.txtBoxName);
             this.panelName.Controls.Add(this.lblName);
-            this.panelName.Location = new System.Drawing.Point(71, 60);
+            this.panelName.Location = new System.Drawing.Point(161, 60);
             this.panelName.Name = "panelName";
             this.panelName.Size = new System.Drawing.Size(470, 47);
             this.panelName.TabIndex = 15;
@@ -253,9 +266,9 @@
             this.panelResultExam.Controls.Add(this.lblDateDay);
             this.panelResultExam.Controls.Add(this.lblName2);
             this.panelResultExam.Controls.Add(this.TableWrongAnswers);
-            this.panelResultExam.Location = new System.Drawing.Point(613, 18);
+            this.panelResultExam.Location = new System.Drawing.Point(795, 22);
             this.panelResultExam.Name = "panelResultExam";
-            this.panelResultExam.Size = new System.Drawing.Size(569, 470);
+            this.panelResultExam.Size = new System.Drawing.Size(721, 475);
             this.panelResultExam.TabIndex = 18;
             this.panelResultExam.Visible = false;
             // 
@@ -263,7 +276,7 @@
             // 
             this.lblGrade.AutoSize = true;
             this.lblGrade.Font = new System.Drawing.Font("Tw Cen MT", 12F);
-            this.lblGrade.Location = new System.Drawing.Point(235, 86);
+            this.lblGrade.Location = new System.Drawing.Point(300, 86);
             this.lblGrade.Name = "lblGrade";
             this.lblGrade.Size = new System.Drawing.Size(64, 19);
             this.lblGrade.TabIndex = 24;
@@ -275,7 +288,7 @@
             this.lblTryAgainExam.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblTryAgainExam.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTryAgainExam.ForeColor = System.Drawing.Color.White;
-            this.lblTryAgainExam.Location = new System.Drawing.Point(230, 431);
+            this.lblTryAgainExam.Location = new System.Drawing.Point(324, 434);
             this.lblTryAgainExam.Name = "lblTryAgainExam";
             this.lblTryAgainExam.Size = new System.Drawing.Size(107, 29);
             this.lblTryAgainExam.TabIndex = 11;
@@ -287,7 +300,7 @@
             // 
             this.lblResultExamColor.AutoSize = true;
             this.lblResultExamColor.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultExamColor.Location = new System.Drawing.Point(460, 123);
+            this.lblResultExamColor.Location = new System.Drawing.Point(598, 123);
             this.lblResultExamColor.Name = "lblResultExamColor";
             this.lblResultExamColor.Size = new System.Drawing.Size(29, 19);
             this.lblResultExamColor.TabIndex = 23;
@@ -307,7 +320,7 @@
             // 
             this.lblResultExam.AutoSize = true;
             this.lblResultExam.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultExam.Location = new System.Drawing.Point(410, 123);
+            this.lblResultExam.Location = new System.Drawing.Point(548, 123);
             this.lblResultExam.Name = "lblResultExam";
             this.lblResultExam.Size = new System.Drawing.Size(52, 19);
             this.lblResultExam.TabIndex = 21;
@@ -317,7 +330,7 @@
             // 
             this.lblEndTime.AutoSize = true;
             this.lblEndTime.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEndTime.Location = new System.Drawing.Point(393, 65);
+            this.lblEndTime.Location = new System.Drawing.Point(531, 65);
             this.lblEndTime.Name = "lblEndTime";
             this.lblEndTime.Size = new System.Drawing.Size(73, 19);
             this.lblEndTime.TabIndex = 20;
@@ -337,7 +350,7 @@
             // 
             this.lblDateDay.AutoSize = true;
             this.lblDateDay.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateDay.Location = new System.Drawing.Point(377, 20);
+            this.lblDateDay.Location = new System.Drawing.Point(515, 20);
             this.lblDateDay.Name = "lblDateDay";
             this.lblDateDay.Size = new System.Drawing.Size(63, 24);
             this.lblDateDay.TabIndex = 18;
@@ -359,39 +372,39 @@
             this.TableWrongAnswers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TableWrongAnswers.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.TableWrongAnswers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TableWrongAnswers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TableWrongAnswers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.TableWrongAnswers.ColumnHeadersHeight = 30;
             this.TableWrongAnswers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.TableWrongAnswers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Question,
             this.Column_Your_Answer,
             this.Column_Correct_Answer});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TableWrongAnswers.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TableWrongAnswers.DefaultCellStyle = dataGridViewCellStyle14;
             this.TableWrongAnswers.Enabled = false;
             this.TableWrongAnswers.GridColor = System.Drawing.SystemColors.Desktop;
-            this.TableWrongAnswers.Location = new System.Drawing.Point(17, 153);
+            this.TableWrongAnswers.Location = new System.Drawing.Point(3, 153);
             this.TableWrongAnswers.Name = "TableWrongAnswers";
             this.TableWrongAnswers.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TableWrongAnswers.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TableWrongAnswers.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.TableWrongAnswers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TableWrongAnswers.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tw Cen MT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TableWrongAnswers.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.TableWrongAnswers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TableWrongAnswers.Size = new System.Drawing.Size(546, 295);
+            this.TableWrongAnswers.Size = new System.Drawing.Size(713, 295);
             this.TableWrongAnswers.TabIndex = 16;
             // 
             // Question
@@ -399,7 +412,7 @@
             this.Question.HeaderText = "Question";
             this.Question.Name = "Question";
             this.Question.ReadOnly = true;
-            this.Question.Width = 200;
+            this.Question.Width = 350;
             // 
             // Column_Your_Answer
             // 
@@ -423,12 +436,16 @@
             // 
             this.timerExamResult.Tick += new System.EventHandler(this.timerExamResult_Tick);
             // 
+            // timerTimeToEnd
+            // 
+            this.timerTimeToEnd.Tick += new System.EventHandler(this.timerTimeToEnd_Tick);
+            // 
             // FormExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(1221, 848);
+            this.ClientSize = new System.Drawing.Size(792, 518);
             this.Controls.Add(this.panelResultExam);
             this.Controls.Add(this.panelQuestion);
             this.Controls.Add(this.panelName);
@@ -473,12 +490,13 @@
         private System.Windows.Forms.Label lblDateDay;
         private System.Windows.Forms.Label lblName2;
         private System.Windows.Forms.DataGridView TableWrongAnswers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Question;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Your_Answer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Correct_Answer;
-        private System.Windows.Forms.Timer TimerPanelName;
         private System.Windows.Forms.Timer timerPanelQuestion;
         private System.Windows.Forms.Timer timerExamResult;
         private System.Windows.Forms.Label lblGrade;
+        private System.Windows.Forms.Label lblEndT;
+        private System.Windows.Forms.Timer timerTimeToEnd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Question;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Your_Answer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Correct_Answer;
     }
 }

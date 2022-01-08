@@ -153,10 +153,10 @@
             // 
             // panelForm2
             // 
-            this.panelForm2.BackColor = System.Drawing.Color.OldLace;
+            this.panelForm2.BackColor = System.Drawing.Color.FloralWhite;
             this.panelForm2.Location = new System.Drawing.Point(233, 525);
             this.panelForm2.Name = "panelForm2";
-            this.panelForm2.Size = new System.Drawing.Size(613, 494);
+            this.panelForm2.Size = new System.Drawing.Size(792, 518);
             this.panelForm2.TabIndex = 19;
             // 
             // timerForm
@@ -168,7 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(289, 519);
+            this.ClientSize = new System.Drawing.Size(291, 510);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblBtnTeacher);
@@ -198,8 +198,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblBtnIMGExam;
         private System.Windows.Forms.Label lblBtnTeacher;
-        private System.Windows.Forms.Panel panelForm2;
         private System.Windows.Forms.Timer timerForm;
+        private System.Windows.Forms.Panel panelForm2;
     }
 }
 

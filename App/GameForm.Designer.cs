@@ -119,7 +119,7 @@
             // 
             // lblWallDown4
             // 
-            this.lblWallDown4.BackColor = System.Drawing.Color.Maroon;
+            this.lblWallDown4.BackColor = System.Drawing.Color.Red;
             this.lblWallDown4.Location = new System.Drawing.Point(854, 165);
             this.lblWallDown4.Name = "lblWallDown4";
             this.lblWallDown4.Size = new System.Drawing.Size(34, 128);
@@ -127,7 +127,7 @@
             // 
             // lblWallUp4
             // 
-            this.lblWallUp4.BackColor = System.Drawing.Color.Maroon;
+            this.lblWallUp4.BackColor = System.Drawing.Color.Red;
             this.lblWallUp4.Location = new System.Drawing.Point(854, 0);
             this.lblWallUp4.Name = "lblWallUp4";
             this.lblWallUp4.Size = new System.Drawing.Size(34, 128);
@@ -135,7 +135,7 @@
             // 
             // lblWallDown3
             // 
-            this.lblWallDown3.BackColor = System.Drawing.Color.Maroon;
+            this.lblWallDown3.BackColor = System.Drawing.Color.Red;
             this.lblWallDown3.Location = new System.Drawing.Point(732, 165);
             this.lblWallDown3.Name = "lblWallDown3";
             this.lblWallDown3.Size = new System.Drawing.Size(34, 128);
@@ -143,7 +143,7 @@
             // 
             // lblWallUp3
             // 
-            this.lblWallUp3.BackColor = System.Drawing.Color.Maroon;
+            this.lblWallUp3.BackColor = System.Drawing.Color.Red;
             this.lblWallUp3.Location = new System.Drawing.Point(732, 0);
             this.lblWallUp3.Name = "lblWallUp3";
             this.lblWallUp3.Size = new System.Drawing.Size(34, 128);
@@ -151,7 +151,7 @@
             // 
             // lblWallDown2
             // 
-            this.lblWallDown2.BackColor = System.Drawing.Color.Maroon;
+            this.lblWallDown2.BackColor = System.Drawing.Color.Red;
             this.lblWallDown2.Location = new System.Drawing.Point(610, 165);
             this.lblWallDown2.Name = "lblWallDown2";
             this.lblWallDown2.Size = new System.Drawing.Size(34, 128);
@@ -159,7 +159,7 @@
             // 
             // lblWallUp2
             // 
-            this.lblWallUp2.BackColor = System.Drawing.Color.Maroon;
+            this.lblWallUp2.BackColor = System.Drawing.Color.Red;
             this.lblWallUp2.Location = new System.Drawing.Point(610, 0);
             this.lblWallUp2.Name = "lblWallUp2";
             this.lblWallUp2.Size = new System.Drawing.Size(34, 128);
@@ -167,7 +167,7 @@
             // 
             // lblWallDown1
             // 
-            this.lblWallDown1.BackColor = System.Drawing.Color.Maroon;
+            this.lblWallDown1.BackColor = System.Drawing.Color.Red;
             this.lblWallDown1.Location = new System.Drawing.Point(488, 165);
             this.lblWallDown1.Name = "lblWallDown1";
             this.lblWallDown1.Size = new System.Drawing.Size(34, 128);
@@ -175,7 +175,7 @@
             // 
             // lblWallUp1
             // 
-            this.lblWallUp1.BackColor = System.Drawing.Color.Maroon;
+            this.lblWallUp1.BackColor = System.Drawing.Color.Red;
             this.lblWallUp1.Location = new System.Drawing.Point(488, 0);
             this.lblWallUp1.Name = "lblWallUp1";
             this.lblWallUp1.Size = new System.Drawing.Size(34, 128);
@@ -184,7 +184,7 @@
             // lblBoxGame
             // 
             this.lblBoxGame.BackColor = System.Drawing.Color.DarkOrange;
-            this.lblBoxGame.Location = new System.Drawing.Point(82, 133);
+            this.lblBoxGame.Location = new System.Drawing.Point(162, 133);
             this.lblBoxGame.Name = "lblBoxGame";
             this.lblBoxGame.Size = new System.Drawing.Size(22, 22);
             this.lblBoxGame.TabIndex = 0;
@@ -215,7 +215,7 @@
             // 
             this.panelContainer.Controls.Add(this.panel1);
             this.panelContainer.Controls.Add(this.panelName);
-            this.panelContainer.Location = new System.Drawing.Point(21, 26);
+            this.panelContainer.Location = new System.Drawing.Point(88, 23);
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(615, 470);
             this.panelContainer.TabIndex = 23;
@@ -227,7 +227,7 @@
             this.panel1.Controls.Add(this.lblScore);
             this.panel1.Controls.Add(this.lblUP);
             this.panel1.Controls.Add(this.lblDown);
-            this.panel1.Location = new System.Drawing.Point(37, 69);
+            this.panel1.Location = new System.Drawing.Point(47, 69);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(521, 386);
             this.panel1.TabIndex = 24;
@@ -238,7 +238,7 @@
             this.panelName.Controls.Add(this.lblStartGame);
             this.panelName.Controls.Add(this.txtBoxName);
             this.panelName.Controls.Add(this.lblName);
-            this.panelName.Location = new System.Drawing.Point(37, 16);
+            this.panelName.Location = new System.Drawing.Point(47, 16);
             this.panelName.Name = "panelName";
             this.panelName.Size = new System.Drawing.Size(521, 47);
             this.panelName.TabIndex = 24;
@@ -251,6 +251,7 @@
             this.txtBoxName.Name = "txtBoxName";
             this.txtBoxName.Size = new System.Drawing.Size(178, 24);
             this.txtBoxName.TabIndex = 5;
+            this.txtBoxName.TabStop = false;
             // 
             // lblName
             // 
@@ -268,12 +269,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(663, 524);
+            this.ClientSize = new System.Drawing.Size(792, 494);
             this.Controls.Add(this.panelContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameForm";
             this.Text = "GameForm";
-            this.Load += new System.EventHandler(this.GameForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyUp);
             this.panelGameZone.ResumeLayout(false);
             this.panelContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

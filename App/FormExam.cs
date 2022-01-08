@@ -106,9 +106,46 @@ namespace App
         private int QuestNum;
         private int counter;
         private string Date;
-        private string StartingExam;
+        private DateTime StartingExam;
         private int WrongAnswers;
+        private int TimeToEnd = 1;
+ 
+        private void timerTimeToEnd_Tick(object sender, EventArgs e)
+        {
+            string s = (StartingExam.AddMinutes(TimeToEnd) - DateTime.Now).ToString().Substring(3, 5);
+            lblEndT.Text = "End in : " + s;
+            if (s == "00:00")
+                ExamIsEnd();
+            timerTimeToEnd.Interval = 1;
+        }
 
+        private void ExamIsEnd()
+        {
+            //Enabled to true Btns Menu When The Exam is Done
+            //lblBtnGame.Enabled = true;
+            //lblBtnIMGExam.Enabled = true;
+            //lblBtnTeacher.Enabled = true;
+
+            timerTimeToEnd.Stop();
+
+            panelName.Visible = false;
+
+            panelQuestion.Visible = false;
+            panelQuestion.Location = new Point(71, 547);
+
+
+            //Result Panel
+            lblName2.Text = "Name : " + txtBoxName.Text;
+            lblDateDay.Text = "Data : " + Date;
+            lblTimeStart.Text = "Starting In : " + StartingExam.ToString("hh:mm:ss tt"); ;
+            lblEndTime.Text = "Ending In : " + DateTime.Now.ToString("hh:mm:ss tt");//EndExam
+
+            InsertStudentGrade(txtBoxName.Text, GetGrade());
+
+            panelResultExam.Visible = true;
+
+            timerExamResult.Start();
+        }
         private void lblStart_Click(object sender, EventArgs e)
         {
             TableWrongAnswers.Rows.Clear();
@@ -119,7 +156,7 @@ namespace App
                 {
                     RandomQuest = new Question[10];
                     ClinetChoiceNumber = new int[10];
-                    ClinetChoiceAnswer = new string[10];
+                    ClinetChoiceAnswer = new string[10] { "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
                     //Enabled Btns Menu
                     //lblBtnGame.Enabled = false;
                     //lblBtnIMGExam.Enabled = false;
@@ -130,8 +167,9 @@ namespace App
                     timerPanelQuestion.Start();
 
                     Date = DateTime.Now.ToString("dd/MM/yyyy");
-                    StartingExam = DateTime.Now.ToString("hh:mm:ss tt");
+                    StartingExam = DateTime.Now;
 
+                    timerTimeToEnd.Start();
                     WrongAnswers = 0;
                     counter = 0;
                     QuestNum = 0;
@@ -189,8 +227,6 @@ namespace App
                 ClinetChoiceAnswer[counter] = radioBtnAnswer4.Text;
                 radioBtnAnswer4.Checked = false;
             }
-            else
-                ClinetChoiceAnswer[counter] = "N/A";
         }
         private void CheckClinetChoice()
         {
@@ -258,29 +294,7 @@ namespace App
                 }
                 else
                 {
-                    //Enabled to true Btns Menu When The Exam is Done
-                    //lblBtnGame.Enabled = true;
-                    //lblBtnIMGExam.Enabled = true;
-                    //lblBtnTeacher.Enabled = true;
-
-
-                    panelName.Location = new Point(71, 494);
-
-                    panelQuestion.Visible = false;
-                    panelQuestion.Location = new Point(71, 547);
-
-
-                    //Result Panel
-                    lblName2.Text = "Name : " + txtBoxName.Text;
-                    lblDateDay.Text = "Data : " + Date;
-                    lblTimeStart.Text = "Starting In : " + StartingExam;
-                    lblEndTime.Text = "Ending In : " + DateTime.Now.ToString("hh:mm:ss tt");//EndExam
-
-                    InsertStudentGrade(txtBoxName.Text, GetGrade());
-
-                    panelResultExam.Visible = true;
-
-                    timerExamResult.Start();
+                    ExamIsEnd();
                 }
             }
             else
@@ -346,7 +360,7 @@ namespace App
 
         private void timerExamResult_Tick(object sender, EventArgs e)
         {
-            if (panelResultExam.Left > 22)
+            if (panelResultExam.Left > 15)
                 panelResultExam.Left -= 3;
             else
                 timerExamResult.Stop();
@@ -356,11 +370,12 @@ namespace App
         private void lblTryAgainExam_Click(object sender, EventArgs e)
         {
             panelResultExam.Visible = false;
-            panelResultExam.Location = new Point(613, 10);
+            panelResultExam.Location = new Point(795, 22);
 
             txtBoxName.Text = "";
+            panelName.Visible = true;
             panelName.Enabled = true;
-            TimerPanelName.Start();
         }
+
     }
 }

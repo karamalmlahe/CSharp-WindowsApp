@@ -44,6 +44,28 @@ namespace App
             GoDown = false;
         }
 
+        public void GameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                GoUpp = true;
+                TimerForBox.Start();
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                GoDown = true;
+                TimerForBox.Start();
+            }
+        }
+
+        public void GameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+                GoUpp = false;
+            if (e.KeyCode == Keys.Down)
+                GoDown = false;
+        }
+
         private void TimerForBox_Tick(object sender, EventArgs e)
         {
             if (GoUpp == true && lblBoxGame.Top > 0 )
@@ -97,14 +119,15 @@ namespace App
             if (txtBoxName.Text != "")
             {
                 Score = 0;
-                lblDown.Enabled = true;
                 lblUP.Enabled = true;
-                panelName.Enabled = false;
+                lblDown.Enabled = true;
+                lblStartGame.Enabled = false;
+                txtBoxName.ReadOnly = true;
                 SetLocationAndHeightToColumnsInGame();
                 timerStartGame.Start();
             }
             else
-                MessageBox.Show("Please Enter A Name", "Karam App");
+                MessageBox.Show("Please Enter Name", "Karam App");
         }
 
         private void timerStartGame_Tick(object sender, EventArgs e)
@@ -194,9 +217,12 @@ namespace App
                 {
                 timerStartGame.Stop();
                 TimerForBox.Stop();
+
                 lblDown.Enabled = false;
                 lblUP.Enabled = false;
-                panelName.Enabled = true;
+                lblStartGame.Enabled = true;
+                txtBoxName.ReadOnly = false;
+                txtBoxName.Text = "";
                 InsertStudentGameScore(txtBoxName.Text, Score);
                 MessageBox.Show("Your Score Is : "+Score.ToString(),"Karam APP");
                 }
@@ -220,11 +246,6 @@ namespace App
             {
                 MessageBox.Show(err.Message);
             }
-        }
-
-        private void GameForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
