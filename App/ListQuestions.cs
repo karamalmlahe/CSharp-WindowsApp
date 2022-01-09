@@ -11,6 +11,7 @@ namespace App
     class ListQuestions
     {
         private List<Question> _Questions;
+        private List<Question> _IMGQuestions;
 
         public ListQuestions()
         {
@@ -21,10 +22,10 @@ namespace App
             try
             {
                 _Questions = new List<Question>();
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");//kesher to database
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlCommand.CommandText = "Select * from questions;";
-                mySqlConnection.Open(); //open connection
+                mySqlCommand.CommandText = "Select * from Questions;";
+                mySqlConnection.Open();
                 SqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
 
 
@@ -43,6 +44,35 @@ namespace App
 
             }
             return _Questions;
+        }
+        public List<Question> GetIMGQuestions()
+        {
+            _Questions = new List<Question>();
+            try
+            {
+                _IMGQuestions = new List<Question>();
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
+                mySqlCommand.CommandText = "Select * from IMGQuestions;";
+                mySqlConnection.Open();
+                SqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+
+
+
+                while (mySqlDataReader.Read())
+                {
+
+                    _IMGQuestions.Add(new Question(mySqlDataReader[0].ToString(), mySqlDataReader[1].ToString(), mySqlDataReader[2].ToString(), mySqlDataReader[3].ToString(), mySqlDataReader[4].ToString(), mySqlDataReader[5].ToString(), mySqlDataReader[6].ToString()));
+                }
+                mySqlDataReader.Close();
+                mySqlConnection.Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return _IMGQuestions;
         }
         public string GetQuestion(int n)
         {
@@ -71,8 +101,11 @@ namespace App
         public override string ToString()
         {
             string str = "";
-            for (int i = 0; i < _Questions.Count; i++)
-                str += _Questions[i].ToString() + "\n";
+            //for (int i = 0; i < _Questions.Count; i++)
+            //    str += _Questions[i].ToString() + "\n";
+
+            for (int i = 0; i < _IMGQuestions.Count; i++)
+                str += _IMGQuestions[i].ToString() + "\n";
             MessageBox.Show(str);
             return str;
         }

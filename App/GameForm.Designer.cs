@@ -215,7 +215,7 @@
             // 
             this.panelContainer.Controls.Add(this.panel1);
             this.panelContainer.Controls.Add(this.panelName);
-            this.panelContainer.Location = new System.Drawing.Point(88, 23);
+            this.panelContainer.Location = new System.Drawing.Point(88, 59);
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(615, 470);
             this.panelContainer.TabIndex = 23;
@@ -269,7 +269,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(792, 494);
+            this.ClientSize = new System.Drawing.Size(801, 559);
             this.Controls.Add(this.panelContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameForm";

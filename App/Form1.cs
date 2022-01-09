@@ -49,6 +49,7 @@ namespace App
         FormExam Exam;
         GameForm Game;
         Teacher t;
+        IMGExam IMG;
         private void Form1_Load(object sender, EventArgs e)
         {
             Exam = new FormExam { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
@@ -125,10 +126,14 @@ namespace App
         }
         private void lblBtnIMGExam_Click(object sender, EventArgs e)
         {
+            IMG = new IMGExam { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             lblBtnExam.Enabled = true;
             lblBtnGame.Enabled = true;
             lblBtnIMGExam.Enabled = false;
             lblBtnTeacher.Enabled = true;
+            panelForm2.Controls.Clear();
+            panelForm2.Controls.Add(IMG);
+            IMG.Show();
 
             timer1.Start();
             timerForm.Start();

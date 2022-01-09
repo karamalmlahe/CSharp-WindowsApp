@@ -48,7 +48,7 @@
             this.lblBtnExam.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBtnExam.Font = new System.Drawing.Font("Tw Cen MT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBtnExam.ForeColor = System.Drawing.Color.Black;
-            this.lblBtnExam.Location = new System.Drawing.Point(30, 184);
+            this.lblBtnExam.Location = new System.Drawing.Point(30, 213);
             this.lblBtnExam.Name = "lblBtnExam";
             this.lblBtnExam.Size = new System.Drawing.Size(233, 39);
             this.lblBtnExam.TabIndex = 0;
@@ -63,8 +63,8 @@
             this.lblMenu.ForeColor = System.Drawing.SystemColors.Desktop;
             this.lblMenu.Location = new System.Drawing.Point(0, 20);
             this.lblMenu.Name = "lblMenu";
-            this.lblMenu.Padding = new System.Windows.Forms.Padding(0, 40, 0, 0);
-            this.lblMenu.Size = new System.Drawing.Size(293, 499);
+            this.lblMenu.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
+            this.lblMenu.Size = new System.Drawing.Size(293, 589);
             this.lblMenu.TabIndex = 1;
             this.lblMenu.Text = "Menu";
             // 
@@ -85,7 +85,7 @@
             // 
             this.lblLine.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblLine.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblLine.Location = new System.Drawing.Point(7, 120);
+            this.lblLine.Location = new System.Drawing.Point(7, 140);
             this.lblLine.Name = "lblLine";
             this.lblLine.Size = new System.Drawing.Size(279, 1);
             this.lblLine.TabIndex = 3;
@@ -111,7 +111,7 @@
             this.lblBtnGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBtnGame.Font = new System.Drawing.Font("Tw Cen MT", 20.25F);
             this.lblBtnGame.ForeColor = System.Drawing.Color.Black;
-            this.lblBtnGame.Location = new System.Drawing.Point(30, 243);
+            this.lblBtnGame.Location = new System.Drawing.Point(30, 272);
             this.lblBtnGame.Name = "lblBtnGame";
             this.lblBtnGame.Size = new System.Drawing.Size(233, 39);
             this.lblBtnGame.TabIndex = 5;
@@ -129,7 +129,7 @@
             this.lblBtnIMGExam.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBtnIMGExam.Font = new System.Drawing.Font("Tw Cen MT", 20.25F);
             this.lblBtnIMGExam.ForeColor = System.Drawing.Color.Black;
-            this.lblBtnIMGExam.Location = new System.Drawing.Point(30, 303);
+            this.lblBtnIMGExam.Location = new System.Drawing.Point(30, 332);
             this.lblBtnIMGExam.Name = "lblBtnIMGExam";
             this.lblBtnIMGExam.Size = new System.Drawing.Size(233, 39);
             this.lblBtnIMGExam.TabIndex = 14;
@@ -143,7 +143,7 @@
             this.lblBtnTeacher.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBtnTeacher.Font = new System.Drawing.Font("Tw Cen MT", 20.25F);
             this.lblBtnTeacher.ForeColor = System.Drawing.Color.Black;
-            this.lblBtnTeacher.Location = new System.Drawing.Point(30, 360);
+            this.lblBtnTeacher.Location = new System.Drawing.Point(30, 389);
             this.lblBtnTeacher.Name = "lblBtnTeacher";
             this.lblBtnTeacher.Size = new System.Drawing.Size(233, 39);
             this.lblBtnTeacher.TabIndex = 15;
@@ -154,9 +154,9 @@
             // panelForm2
             // 
             this.panelForm2.BackColor = System.Drawing.Color.FloralWhite;
-            this.panelForm2.Location = new System.Drawing.Point(233, 525);
+            this.panelForm2.Location = new System.Drawing.Point(233, 616);
             this.panelForm2.Name = "panelForm2";
-            this.panelForm2.Size = new System.Drawing.Size(792, 518);
+            this.panelForm2.Size = new System.Drawing.Size(792, 588);
             this.panelForm2.TabIndex = 19;
             // 
             // timerForm
@@ -168,7 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(291, 510);
+            this.ClientSize = new System.Drawing.Size(290, 588);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblBtnTeacher);

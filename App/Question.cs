@@ -8,6 +8,7 @@ namespace App
 {
     class Question
     {
+        private string _IMGPath;
         private string _Question;
         private string _Answer1;
         private string _Answer2;
@@ -23,6 +24,21 @@ namespace App
             this._Answer3 = Answer3;
             this._Answer4 = Answer4;
             this._Correct = Correct;
+        }
+
+        public Question(string img ,string Question, string Answer1, string Answer2, string Answer3, string Answer4, string Correct)
+        {
+            this._IMGPath = img;
+            this._Question = Question;
+            this._Answer1 = Answer1;
+            this._Answer2 = Answer2;
+            this._Answer3 = Answer3;
+            this._Answer4 = Answer4;
+            this._Correct = Correct;
+        }
+        public string GetIMGPath()
+        {
+            return this._IMGPath;
         }
         public string GetQuestion()
         {
