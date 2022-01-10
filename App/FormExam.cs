@@ -20,7 +20,7 @@ namespace App
             InitializeComponent();
         }
 
-        private void CreateExamTable()
+        public void CreateExamTable()
         {
             try
             {
@@ -32,22 +32,9 @@ namespace App
                 mySqlConnection.Close();
                 InsertQuestions();
             }
-            catch
+            catch(Exception err)
             {
-                try
-                {
-                    SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                    SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                    mySqlConnection.Open();
-                    mySqlCommand.CommandText = "DROP TABLE Questions;";
-                    mySqlCommand.ExecuteNonQuery();
-                    mySqlConnection.Close();
-                    CreateExamTable();
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    //MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void InsertQuestions()

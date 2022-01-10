@@ -222,8 +222,8 @@ namespace App
                 lblUP.Enabled = false;
                 lblStartGame.Enabled = true;
                 txtBoxName.ReadOnly = false;
-                txtBoxName.Text = "";
                 InsertStudentGameScore(txtBoxName.Text, Score);
+                txtBoxName.Text = "";
                 MessageBox.Show("Your Score Is : "+Score.ToString(),"Karam APP");
                 }
                 Score++;

@@ -20,7 +20,7 @@ namespace App
             InitializeComponent();
         }
 
-        private void CreateExamIMGTable()
+        public void CreateExamIMGTable()
         {
             try
             {
@@ -32,22 +32,9 @@ namespace App
                 mySqlConnection.Close();
                 InsertIMGQuestions();
             }
-            catch
+            catch (Exception err)
             {
-                try
-                {
-                    SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                    SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                    mySqlConnection.Open();
-                    mySqlCommand.CommandText = "DROP TABLE IMGQuestions ;";
-                    mySqlCommand.ExecuteNonQuery();
-                    mySqlConnection.Close();
-                    CreateExamIMGTable();
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    //MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void InsertIMGQuestions()
@@ -58,29 +45,29 @@ namespace App
                 SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog','There are ________ months in a year.','6','9','12','8','12');";
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
                 mySqlCommand.ExecuteNonQuery();
                 mySqlConnection.Close();
             }
@@ -142,7 +129,7 @@ namespace App
                         RandomQuest[i] = new Question(_IMGQuestions[index].GetIMGPath(),_IMGQuestions[index].GetQuestion(), _IMGQuestions[index].GetAnswer1(), _IMGQuestions[index].GetAnswer2(), _IMGQuestions[index].GetAnswer3(), _IMGQuestions[index].GetAnswer4(), _IMGQuestions[index].GetCorrect());
                         _IMGQuestions.RemoveAt(index);
                     }
-                    pictureBox1.Image = ((Image)Properties.Resources.ResourceManager.GetObject(RandomQuest[counter].GetIMGPath()));
+                    pictureBox1.Image = Image.FromFile("img/"+RandomQuest[counter].GetIMGPath());
                     lblQuestion.Text = RandomQuest[counter].GetQuestion();
                     radioBtnAnswer1.Text = RandomQuest[counter].GetAnswer1();
                     radioBtnAnswer2.Text = RandomQuest[counter].GetAnswer2();
@@ -210,6 +197,7 @@ namespace App
                 if (counter < RandomQuest.Length)
                 {
                     QuestNum++;
+                    pictureBox1.Image = Image.FromFile("img/" + RandomQuest[counter].GetIMGPath());
                     lblQuestion.Text = RandomQuest[counter].GetQuestion();
                     radioBtnAnswer1.Text = RandomQuest[counter].GetAnswer1();
                     radioBtnAnswer2.Text = RandomQuest[counter].GetAnswer2();
@@ -278,6 +266,7 @@ namespace App
                 counter--;
                 QuestNum--;
                 CheckClinetChoice();
+                pictureBox1.Image = Image.FromFile("img/" + RandomQuest[counter].GetIMGPath());
                 lblQuestion.Text = RandomQuest[counter].GetQuestion();
                 radioBtnAnswer1.Text = RandomQuest[counter].GetAnswer1();
                 radioBtnAnswer2.Text = RandomQuest[counter].GetAnswer2();
