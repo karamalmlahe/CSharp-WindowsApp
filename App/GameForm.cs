@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using System.IO;
 namespace App
 {
     public partial class GameForm : Form
@@ -222,30 +220,15 @@ namespace App
                 lblUP.Enabled = false;
                 lblStartGame.Enabled = true;
                 txtBoxName.ReadOnly = false;
-                InsertStudentGameScore(txtBoxName.Text, Score);
+
+
+                BinaryFile f = new BinaryFile();
+                f.InsertStudentGameScore(txtBoxName.Text, Score);
                 txtBoxName.Text = "";
                 MessageBox.Show("Your Score Is : "+Score.ToString(),"Karam APP");
                 }
                 Score++;
             timerStartGame.Interval = 1;
-        }
-
-        private void InsertStudentGameScore(string name, int Score)
-        {
-            try
-            {
-                FileStream f = new FileStream("GameScore.my", FileMode.Append);
-                BinaryWriter sr = new BinaryWriter(f);
-                sr.Write(name);
-                sr.Write(Score);
-
-                sr.Close();
-                f.Close();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
         }
     }
 }

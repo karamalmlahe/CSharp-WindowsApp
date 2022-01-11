@@ -7,10 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.IO;
-
-using System.Drawing.Drawing2D;
 
 namespace App
 {
@@ -127,6 +123,7 @@ namespace App
         private void lblBtnIMGExam_Click(object sender, EventArgs e)
         {
             IMG = new IMGExam { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            panelForm2.Location = new Point(233, 525);
             lblBtnExam.Enabled = true;
             lblBtnGame.Enabled = true;
             lblBtnIMGExam.Enabled = false;
@@ -149,6 +146,7 @@ namespace App
         private void lblBtnTeacher_Click(object sender, EventArgs e)
         {
             t = new Teacher { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            panelForm2.Location = new Point(233, 525);
             lblBtnExam.Enabled = true;
             lblBtnGame.Enabled = true;
             lblBtnIMGExam.Enabled = true;

@@ -8,91 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.Data.SqlClient;
 using System.IO;
-using System.Resources;
 
 namespace App
 {
     public partial class Teacher : Form
     {
+        private Sql sql = new Sql();
+        string IMGName = "";
+        Bitmap b;
         public Teacher()
         {
             InitializeComponent();
-        }
-
-        private void CreateTeacherTable()
-        {
-            try
-            {
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "create table Teacher (Username nvarchar(50) ,Password nvarchar(50));";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-                InsertTeachers();
-            }
-            catch
-            {
-                try
-                {
-                    SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                    SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                    mySqlConnection.Open();
-                    mySqlCommand.CommandText = "DROP TABLE Teacher;";
-                    mySqlCommand.ExecuteNonQuery();
-                    mySqlConnection.Close();
-                    CreateTeacherTable();
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-        private void InsertTeachers()
-        {
-            try
-            {
-
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "insert into Teacher(Username ,Password) values('admin','admin');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Teacher(Username ,Password) values('Karam','123');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private bool checkUsernameAndPassword(string user, string pass)
-        {
-            try
-            {
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlCommand.CommandText = "Select * from Teacher where Username='" + user + "'and Password='" + pass + "' ;";
-                mySqlConnection.Open();
-                SqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
-
-                if (mySqlDataReader.Read())
-                    return true;
-
-                mySqlDataReader.Close();
-                mySqlConnection.Close();
-                return false;
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-                return false;
-            }
         }
         private void showStudentGrades()
         {
@@ -178,8 +105,8 @@ namespace App
 
         private void lblBtnLogin_Click(object sender, EventArgs e)
         {
-            panelLogin.Enabled = false;
-            if (checkUsernameAndPassword(textBoxUsername.Text, textBoxPassword.Text))
+             panelLogin.Enabled = false;
+            if (sql.checkUsernameAndPassword(textBoxUsername.Text, textBoxPassword.Text))
             {
                 panelLogin.Visible = false;
                 timerShowTables.Start();
@@ -190,16 +117,9 @@ namespace App
                 panelLogin.Enabled = true;
             }
         }
-
         private void Teacher_Load(object sender, EventArgs e)
         {
-            CreateTeacherTable();
-
-
-            IMGExam IMG = new IMGExam();
-            IMG.CreateExamIMGTable();
-            FormExam Exam = new FormExam();
-            Exam.CreateExamTable();
+           sql.CreateTeacherTable();
 
         }
 
@@ -232,16 +152,14 @@ namespace App
         {
             e.SuppressKeyPress = true;
         }
-        string IMGName="";
-        Bitmap b;
         private void labelBtnAddIMG_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialogIMG = new OpenFileDialog();
-            
-            if (dialogIMG.ShowDialog() == DialogResult.OK)
+            openFileDialog1.Filter = "Image Files(*.PNG;*.JPG)|*.PNG;*.JPG";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                IMGName = dialogIMG.SafeFileName;
-                b = new Bitmap(dialogIMG.FileName);
+                IMGName = openFileDialog1.SafeFileName;
+                b = new Bitmap(openFileDialog1.FileName);
             }
         }
         private void addToComboBoxCorrect()
@@ -255,21 +173,25 @@ namespace App
 
         private void textBoxAnswer1_TextChanged(object sender, EventArgs e)
         {
+            comboBoxCorrect.Text = "";
             addToComboBoxCorrect();
         }
 
         private void textBoxAnswer2_TextChanged(object sender, EventArgs e)
         {
+            comboBoxCorrect.Text = "";
             addToComboBoxCorrect();
         }
 
         private void textBoxAnswer3_TextChanged(object sender, EventArgs e)
         {
+            comboBoxCorrect.Text = "";
             addToComboBoxCorrect();
         }
 
         private void textBoxAnswer4_TextChanged(object sender, EventArgs e)
         {
+            comboBoxCorrect.Text = "";
             addToComboBoxCorrect();
         }
 
@@ -291,40 +213,6 @@ namespace App
                 labelBtnAddIMG.Enabled = true;
             }
         }
-        private void InsertNormalQuestions(string Question,string Answer1, string Answer2, string Answer3, string Answer4, string Corr)
-        {
-            try
-            {
-
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('"+ Question + "','"+ Answer1 + "','"+ Answer2 + "','"+Answer3+"','"+Answer3+"','"+Corr+"');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void InsertIMGQuestions(string imgPath,string Question, string Answer1, string Answer2, string Answer3, string Answer4, string Corr)
-        {
-            try
-            {
-
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('"+imgPath+"','"+Question+"','"+Answer1+"','"+Answer2+"','"+Answer3+"','"+Answer4+"','"+Corr+"');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void clearInputs()
         {
             IMGName = "";
@@ -339,18 +227,18 @@ namespace App
 
         private void lblAddQuestion_Click(object sender, EventArgs e)
         {
-            if(IMGName!="" && textBoxQuestion.Text !="" && textBoxAnswer1.Text!="" && textBoxAnswer2.Text!="" && textBoxAnswer3.Text != "" && textBoxAnswer4.Text != "" && comboBoxCorrect.Text != "")
+            if(textBoxQuestion.Text !="" && textBoxAnswer1.Text!="" && textBoxAnswer2.Text!="" && textBoxAnswer3.Text != "" && textBoxAnswer4.Text != "" && comboBoxCorrect.Text != "")
             {
                 if (comboBoxAddQuestion.Text == "Normal Exam")
                 {
-                    InsertNormalQuestions(textBoxQuestion.Text, textBoxAnswer1.Text, textBoxAnswer2.Text, textBoxAnswer3.Text, textBoxAnswer4.Text, comboBoxCorrect.Text);
+                    sql.InsertNormalQuestions(textBoxQuestion.Text, textBoxAnswer1.Text, textBoxAnswer2.Text, textBoxAnswer3.Text, textBoxAnswer4.Text, comboBoxCorrect.Text);
                     clearInputs();
 
                 }
-                else if (comboBoxAddQuestion.Text == "IMG Exam")
+                else if (IMGName != "" && comboBoxAddQuestion.Text == "IMG Exam")
                 {
                     b.Save("img/" + IMGName);
-                    InsertIMGQuestions(IMGName, textBoxQuestion.Text, textBoxAnswer1.Text, textBoxAnswer2.Text, textBoxAnswer3.Text, textBoxAnswer4.Text, comboBoxCorrect.Text);
+                    sql.InsertIMGQuestions(IMGName, textBoxQuestion.Text, textBoxAnswer1.Text, textBoxAnswer2.Text, textBoxAnswer3.Text, textBoxAnswer4.Text, comboBoxCorrect.Text);
                     clearInputs();
                 }
             }

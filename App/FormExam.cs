@@ -8,9 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.IO;
-using System.Data.SqlClient;
-
 namespace App
 {
     public partial class FormExam : Form
@@ -19,70 +16,10 @@ namespace App
         {
             InitializeComponent();
         }
-
-        public void CreateExamTable()
-        {
-            try
-            {
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "create table Questions (Question nvarchar(70) ,Answer1 nvarchar(20) ,Answer2 nvarchar(20) ,Answer3 nvarchar(20) ,Answer4 nvarchar(20) ,Correct nvarchar(20));";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-                InsertQuestions();
-            }
-            catch(Exception err)
-            {
-                    //MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void InsertQuestions()
-        {
-            try
-            {
-
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('How many hours are there in a day?','48 hours','24 hours','72 hours','12 hours','24 hours');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('How many fingers are there in a human body’s single hand?','10 fingers','12 fingers','15 fingers','5 fingers','5 fingers');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('How many letters are there in the English?','30 letters','26 letters','18 letters','10 letters','26 letters');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('What is the color of a sun?','Yellow','White','Pink','Blue','Yellow');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('What is 2+7?','1','9','4','5','9');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Which number comes after 6?','4','5','7','8','7');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('How many colors are there in a rainbow?','10','12','7','8','7');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Which day comes after Friday?','Thursday','Monday','Saturday','Sunday','Saturday');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('What is 2+2?','10','12','4','8','4');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Finish the sequence: 9, 18, 27, __','32','28','36','0','36');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Which number comes before 9?','8','10','11','7','8');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('What is 5-3?','3','1','0','2','2');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Finish the sequence: 4, __, 12, 16','6','18','8','2','8');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void FormExam_Load(object sender, EventArgs e)
         {
-            CreateExamTable();
+            Sql sql = new Sql();
+            sql.CreateExamTable();
         }
         ListQuestions A = new ListQuestions();
         private List<Question> _Questions;
@@ -108,10 +45,6 @@ namespace App
 
         private void ExamIsEnd()
         {
-            //Enabled to true Btns Menu When The Exam is Done
-            //lblBtnGame.Enabled = true;
-            //lblBtnIMGExam.Enabled = true;
-            //lblBtnTeacher.Enabled = true;
 
             timerTimeToEnd.Stop();
 
@@ -127,7 +60,9 @@ namespace App
             lblTimeStart.Text = "Starting In : " + StartingExam.ToString("hh:mm:ss tt"); ;
             lblEndTime.Text = "Ending In : " + DateTime.Now.ToString("hh:mm:ss tt");//EndExam
 
-            InsertStudentGrade(txtBoxName.Text, GetGrade());
+
+            BinaryFile f = new BinaryFile();
+            f.InsertStudentGrade("ExamGrade.my", txtBoxName.Text, GetGrade());
 
             panelResultExam.Visible = true;
 
@@ -144,11 +79,6 @@ namespace App
                     RandomQuest = new Question[10];
                     ClinetChoiceNumber = new int[10];
                     ClinetChoiceAnswer = new string[10] { "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-                    //Enabled Btns Menu
-                    //lblBtnGame.Enabled = false;
-                    //lblBtnIMGExam.Enabled = false;
-                    //lblBtnTeacher.Enabled = false;
-
 
                     panelQuestion.Visible = true;
                     timerPanelQuestion.Start();
@@ -277,23 +207,6 @@ namespace App
             {
                 panelName.Enabled = true;
                 MessageBox.Show("No Questions", "Karam App");
-            }
-        }
-        private void InsertStudentGrade(string name, int grade)
-        {
-            try
-            {
-                FileStream f = new FileStream("ExamGrade.my", FileMode.Append);
-                BinaryWriter sr = new BinaryWriter(f);
-                sr.Write(name);
-                sr.Write(grade);
-
-                sr.Close();
-                f.Close();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
             }
         }
         private int GetGrade()

@@ -8,9 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.Data.SqlClient;
-using System.IO;
-
 namespace App
 {
     public partial class IMGExam : Form
@@ -19,67 +16,10 @@ namespace App
         {
             InitializeComponent();
         }
-
-        public void CreateExamIMGTable()
-        {
-            try
-            {
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "create table IMGQuestions (Image nvarchar(100),Question nvarchar(70) ,Answer1 nvarchar(20) ,Answer2 nvarchar(20) ,Answer3 nvarchar(20) ,Answer4 nvarchar(20) ,Correct nvarchar(20));";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-                InsertIMGQuestions();
-            }
-            catch (Exception err)
-            {
-                    //MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void InsertIMGQuestions()
-        {
-            try
-            {
-
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
-                SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
-                mySqlConnection.Open();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','There are ________ months in a year.','6','9','12','8','12');";
-                mySqlCommand.ExecuteNonQuery();
-                mySqlConnection.Close();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Karam App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void IMGExam_Load(object sender, EventArgs e)
         {
-            CreateExamIMGTable();
+            Sql sql = new Sql();
+            sql.CreateExamIMGTable();
         }
 
         ListQuestions A = new ListQuestions();
@@ -106,10 +46,6 @@ namespace App
                     RandomQuest = new Question[10];
                     ClinetChoiceNumber = new int[10];
                     ClinetChoiceAnswer = new string[10] { "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-                    //Enabled Btns Menu
-                    //lblBtnGame.Enabled = false;
-                    //lblBtnIMGExam.Enabled = false;
-                    //lblBtnTeacher.Enabled = false;
 
 
                     panelQuestion.Visible = true;
@@ -160,10 +96,6 @@ namespace App
         }
         private void ExamIsEnd()
         {
-            //Enabled to true Btns Menu When The Exam is Done
-            //lblBtnGame.Enabled = true;
-            //lblBtnIMGExam.Enabled = true;
-            //lblBtnTeacher.Enabled = true;
 
             timerTimeToEnd.Stop();
 
@@ -179,7 +111,8 @@ namespace App
             lblTimeStart.Text = "Starting In : " + StartingExam.ToString("hh:mm:ss tt"); ;
             lblEndTime.Text = "Ending In : " + DateTime.Now.ToString("hh:mm:ss tt");//EndExam
 
-            InsertStudentGrade(txtBoxName.Text, GetGrade());
+            BinaryFile f = new BinaryFile();
+            f.InsertStudentGrade("IMGExamGrade.my", txtBoxName.Text, GetGrade());
 
             panelResultExam.Visible = true;
 
@@ -296,24 +229,6 @@ namespace App
             else
                 timerExamResult.Stop();
             timerExamResult.Interval = 1;
-        }
-
-        private void InsertStudentGrade(string name, int grade)
-        {
-            try
-            {
-                FileStream f = new FileStream("IMGExamGrade.my", FileMode.Append);
-                BinaryWriter sr = new BinaryWriter(f);
-                sr.Write(name);
-                sr.Write(grade);
-
-                sr.Close();
-                f.Close();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
         }
         private int GetGrade()
         {
