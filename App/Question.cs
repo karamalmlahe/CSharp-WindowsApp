@@ -64,9 +64,5 @@ namespace App
         {
             return this._Correct;
         }
-        public override string ToString()
-        {
-            return _Question + " " + _Answer1 + " " + _Answer2 + " " + _Answer3 + " " + _Answer4 + " " + _Correct;
-        }
     }
 }

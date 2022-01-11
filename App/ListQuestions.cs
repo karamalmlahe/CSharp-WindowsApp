@@ -22,7 +22,7 @@ namespace App
             try
             {
                 _Questions = new List<Question>();
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlCommand.CommandText = "Select * from Questions;";
                 mySqlConnection.Open();
@@ -51,7 +51,7 @@ namespace App
             try
             {
                 _IMGQuestions = new List<Question>();
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlCommand.CommandText = "Select * from IMGQuestions;";
                 mySqlConnection.Open();
@@ -97,17 +97,6 @@ namespace App
         public string GetCorrect(int n)
         {
             return _Questions[n].GetCorrect();
-        }
-        public override string ToString()
-        {
-            string str = "";
-            //for (int i = 0; i < _Questions.Count; i++)
-            //    str += _Questions[i].ToString() + "\n";
-
-            for (int i = 0; i < _IMGQuestions.Count; i++)
-                str += _IMGQuestions[i].ToString() + "\n";
-            MessageBox.Show(str);
-            return str;
         }
     }
 
