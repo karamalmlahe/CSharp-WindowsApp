@@ -17,7 +17,7 @@ namespace App
         {
             try
             {
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
                 mySqlCommand.CommandText = "create table IMGQuestions (Image nvarchar(100),Question nvarchar(100) ,Answer1 nvarchar(50) ,Answer2 nvarchar(50) ,Answer3 nvarchar(50) ,Answer4 nvarchar(50) ,Correct nvarchar(50));";
@@ -35,7 +35,7 @@ namespace App
             try
             {
 
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
                 mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('dog.jpg','How many dogs can you see in this picture?','6 dogs','9 dogs','5 dogs','1 dog','5 dogs');";
@@ -77,7 +77,7 @@ namespace App
         {
             try
             {
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
                 mySqlCommand.CommandText = "create table Questions (Question nvarchar(70) ,Answer1 nvarchar(20) ,Answer2 nvarchar(20) ,Answer3 nvarchar(20) ,Answer4 nvarchar(20) ,Correct nvarchar(20));";
@@ -95,7 +95,7 @@ namespace App
             try
             {
 
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
                 mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('There are ________ days in a year.','316','365','360','325','365');";
@@ -149,7 +149,7 @@ namespace App
         {
             try
             {
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
                 mySqlCommand.CommandText = "create table Teacher (Username nvarchar(50) ,Password nvarchar(50));";
@@ -166,7 +166,7 @@ namespace App
             try
             {
 
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
                 mySqlCommand.CommandText = "insert into Teacher(Username ,Password) values('admin','admin');";
@@ -185,7 +185,7 @@ namespace App
         {
             try
             {
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlCommand.CommandText = "Select * from Teacher where Username='" + user + "'and Password='" + pass + "' ;";
                 mySqlConnection.Open();
@@ -209,7 +209,7 @@ namespace App
             try
             {
 
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
                 mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('" + Question + "','" + Answer1 + "','" + Answer2 + "','" + Answer3 + "','" + Answer3 + "','" + Corr + "');";
@@ -226,7 +226,7 @@ namespace App
             try
             {
 
-                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=dugma;Integrated Security=SSPI;");
+                SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
                 mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('" + imgPath + "','" + Question + "','" + Answer1 + "','" + Answer2 + "','" + Answer3 + "','" + Answer4 + "','" + Corr + "');";
