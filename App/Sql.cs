@@ -62,6 +62,22 @@ namespace App
                 mySqlCommand.ExecuteNonQuery();
                 mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('USA.jpg','What country flag is this?','Germany','Austria','United States','Russia','United States');";
                 mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('tesla.jpg','What is the name of this automotive brand?','BMW','Tesla','Nissan','Hyundai','Tesla');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Ronaldo.jpg','Identify the football player.','Ronaldo','Messi','Neymar','Ramos','Ronaldo');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('tiger.jpg','Identify the animal','Donkey','Tiger','Mouse','Lion','Tiger');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('sun.jpg','What is the color of a sun?','Pink','Blue','Yellow','White','Yellow');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('English Letters.jpg','How many letters are there in the English?','20 letters','10 letters','18 letters','26 letters','26 letters');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('rainbow.png','How many colors are there in a rainbow?','10','12','7','8','7');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('numbers.png','Which number comes after 2?','4','1','3','7','3');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into IMGQuestions(Image ,Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Apple.png','What is the name of this fruit?','Mango','Banana','Orange','Apple','Apple');";
+                mySqlCommand.ExecuteNonQuery();
                 mySqlConnection.Close();
             }
             catch (Exception err)
@@ -80,7 +96,7 @@ namespace App
                 SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
-                mySqlCommand.CommandText = "create table Questions (Question nvarchar(70) ,Answer1 nvarchar(20) ,Answer2 nvarchar(20) ,Answer3 nvarchar(20) ,Answer4 nvarchar(20) ,Correct nvarchar(20));";
+                mySqlCommand.CommandText = "create table Questions (Question nvarchar(150) ,Answer1 nvarchar(70) ,Answer2 nvarchar(70) ,Answer3 nvarchar(70) ,Answer4 nvarchar(70) ,Correct nvarchar(70));";
                 mySqlCommand.ExecuteNonQuery();
                 mySqlConnection.Close();
                 InsertQuestions();
@@ -129,6 +145,14 @@ namespace App
                 mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Finish the sequence: 4, __, 12, 16','6','18','8','2','8');";
                 mySqlCommand.ExecuteNonQuery();
                 mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('What is 2-2?','40','1','0','2','0');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('What is 7-0?','-7','70','0','7','7');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('What is 0+10?','100','0','10','11','10');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('What is the 15th letter of the English alphabet?','F','I','O','M','O');";
+                mySqlCommand.ExecuteNonQuery();
+                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('Which number comes after 6?','4','1','5','7','7');";
                 mySqlCommand.ExecuteNonQuery();
                 mySqlConnection.Close();
             }
@@ -212,7 +236,7 @@ namespace App
                 SqlConnection mySqlConnection = new SqlConnection("server=(local)\\SQLEXPRESS;database=KaramAPP;Integrated Security=SSPI;");
                 SqlCommand mySqlCommand = mySqlConnection.CreateCommand();
                 mySqlConnection.Open();
-                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('" + Question + "','" + Answer1 + "','" + Answer2 + "','" + Answer3 + "','" + Answer3 + "','" + Corr + "');";
+                mySqlCommand.CommandText = "insert into Questions(Question ,Answer1 ,Answer2 ,Answer3,Answer4 ,Correct) values('" + Question + "','" + Answer1 + "','" + Answer2 + "','" + Answer3 + "','" + Answer4 + "','" + Corr + "');";
                 mySqlCommand.ExecuteNonQuery();
                 mySqlConnection.Close();
             }

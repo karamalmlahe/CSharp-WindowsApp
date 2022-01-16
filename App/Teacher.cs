@@ -21,6 +21,34 @@ namespace App
         {
             InitializeComponent();
         }
+        private void Teacher_Load(object sender, EventArgs e)
+        {
+            sql.CreateTeacherTable();
+
+        }
+        private void lblBtnLogin_Click(object sender, EventArgs e)
+        {
+            panelLogin.Enabled = false;
+            if (sql.checkUsernameAndPassword(textBoxUsername.Text, textBoxPassword.Text))
+            {
+                panelLogin.Visible = false;
+                timerShowTables.Start();
+            }
+            else
+            {
+                MessageBox.Show("Wrong name or password");
+                panelLogin.Enabled = true;
+            }
+        }
+
+        private void timerShowTables_Tick(object sender, EventArgs e)
+        {
+            if (panelTeacher.Left > 15)
+                panelTeacher.Left -= 3;
+            else
+                timerShowTables.Stop();
+            timerShowTables.Interval = 1;
+        }
         private void showStudentGrades()
         {
             try
@@ -39,7 +67,7 @@ namespace App
                     count++;
                 }
                 lblStudentCountInExam.Text = "Count Of Students : " + count;
-                lblAvg.Text = "Average : " + sum / count;
+                lblAvg.Text = "Average : " + Math.Round((double)sum / count, 2);
                 sr.Close();
                 file.Close();
             }
@@ -66,7 +94,7 @@ namespace App
                     count++;
                 }
                 lblStudentCountInExam.Text = "Count Of Students : " + count;
-                lblAvg.Text = "Average : " + (sum / count);
+                lblAvg.Text = "Average : "+Math.Round((double)sum / count, 2) ;
                 sr.Close();
                 file.Close();
             }
@@ -95,41 +123,12 @@ namespace App
                 sr.Close();
                 file.Close();
                 lblStudentCountInExam.Text = "Count Of Students : " + count;
-                lblAvg.Text = "Average : " + (sum / count);
+                lblAvg.Text = "Average : "+Math.Round((double)sum / count, 2);
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
-        }
-
-        private void lblBtnLogin_Click(object sender, EventArgs e)
-        {
-             panelLogin.Enabled = false;
-            if (sql.checkUsernameAndPassword(textBoxUsername.Text, textBoxPassword.Text))
-            {
-                panelLogin.Visible = false;
-                timerShowTables.Start();
-            }
-            else
-            {
-                MessageBox.Show("Wrong name or password");
-                panelLogin.Enabled = true;
-            }
-        }
-        private void Teacher_Load(object sender, EventArgs e)
-        {
-           sql.CreateTeacherTable();
-
-        }
-
-        private void timerShowTables_Tick(object sender, EventArgs e)
-        {
-            if (panelTeacher.Left > 15)
-                panelTeacher.Left -= 3;
-            else
-                timerShowTables.Stop();
-            timerShowTables.Interval = 1;
         }
 
         private void comboBoxTable_KeyDown(object sender, KeyEventArgs e)
@@ -158,7 +157,7 @@ namespace App
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                IMGName = openFileDialog1.SafeFileName;
+                IMGName = openFileDialog1.SafeFileName;//name.jpg
                 b = new Bitmap(openFileDialog1.FileName);
             }
         }
@@ -230,17 +229,11 @@ namespace App
             if(textBoxQuestion.Text !="" && textBoxAnswer1.Text!="" && textBoxAnswer2.Text!="" && textBoxAnswer3.Text != "" && textBoxAnswer4.Text != "" && comboBoxCorrect.Text != "")
             {
                 if (comboBoxAddQuestion.Text == "Normal Exam")
-                {
                     sql.InsertNormalQuestions(textBoxQuestion.Text, textBoxAnswer1.Text, textBoxAnswer2.Text, textBoxAnswer3.Text, textBoxAnswer4.Text, comboBoxCorrect.Text);
-                    clearInputs();
-
-                }
                 else if (IMGName != "" && comboBoxAddQuestion.Text == "IMG Exam")
-                {
                     b.Save("img/" + IMGName);
-                    sql.InsertIMGQuestions(IMGName, textBoxQuestion.Text, textBoxAnswer1.Text, textBoxAnswer2.Text, textBoxAnswer3.Text, textBoxAnswer4.Text, comboBoxCorrect.Text);
-                    clearInputs();
-                }
+                sql.InsertIMGQuestions(IMGName, textBoxQuestion.Text, textBoxAnswer1.Text, textBoxAnswer2.Text, textBoxAnswer3.Text, textBoxAnswer4.Text, comboBoxCorrect.Text);
+                clearInputs();
             }
             else
                 MessageBox.Show("Please Add Text In All InputsText");

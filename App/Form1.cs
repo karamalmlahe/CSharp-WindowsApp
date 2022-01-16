@@ -34,7 +34,7 @@ namespace App
             if (dragging)
             {
                 Point p = PointToScreen(e.Location);
-                Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
+               this.Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
             }
         }
 
@@ -61,6 +61,7 @@ namespace App
             panelForm2.Controls.Add(Exam);
             Exam.Show();
 
+            //Enabled btns
             lblBtnExam.Enabled = false;
             lblBtnGame.Enabled = true;
             lblBtnIMGExam.Enabled = true;
@@ -83,7 +84,7 @@ namespace App
             panelForm2.Controls.Add(Game);
             Game.Show();
 
-
+            //Enabled btns
             lblBtnExam.Enabled = true;
             lblBtnGame.Enabled = false;
             lblBtnIMGExam.Enabled = true;
@@ -124,17 +125,17 @@ namespace App
         {
             IMG = new IMGExam { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             panelForm2.Location = new Point(233, 525);
-            lblBtnExam.Enabled = true;
-            lblBtnGame.Enabled = true;
-            lblBtnIMGExam.Enabled = false;
-            lblBtnTeacher.Enabled = true;
+            timer1.Start();
+            timerForm.Start();
             panelForm2.Controls.Clear();
             panelForm2.Controls.Add(IMG);
             IMG.Show();
 
-            timer1.Start();
-            timerForm.Start();
-
+            //Enabled btns
+            lblBtnExam.Enabled = true;
+            lblBtnGame.Enabled = true;
+            lblBtnIMGExam.Enabled = false;
+            lblBtnTeacher.Enabled = true;
 
             //btn color on click
             lblBtnExam.BackColor = SystemColors.MenuHighlight;
@@ -147,16 +148,18 @@ namespace App
         {
             t = new Teacher { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             panelForm2.Location = new Point(233, 525);
-            lblBtnExam.Enabled = true;
-            lblBtnGame.Enabled = true;
-            lblBtnIMGExam.Enabled = true;
-            lblBtnTeacher.Enabled = false;
+            timer1.Start();
+            timerForm.Start();
             panelForm2.Controls.Clear();
             panelForm2.Controls.Add(t);
             t.Show();
 
-            timer1.Start();
-            timerForm.Start();
+
+            //Enabled btns
+            lblBtnExam.Enabled = true;
+            lblBtnGame.Enabled = true;
+            lblBtnIMGExam.Enabled = true;
+            lblBtnTeacher.Enabled = false;
 
             //btn color on click
             lblBtnExam.BackColor = SystemColors.MenuHighlight;

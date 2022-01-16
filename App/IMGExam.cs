@@ -94,34 +94,10 @@ namespace App
                 ExamIsEnd();
             timerTimeToEnd.Interval = 1;
         }
-        private void ExamIsEnd()
-        {
-
-            timerTimeToEnd.Stop();
-
-            panelName.Visible = false;
-
-            panelQuestion.Visible = false;
-            panelQuestion.Location = new Point(133, 547);
-
-
-            //Result Panel
-            lblName2.Text = "Name : " + txtBoxName.Text;
-            lblDateDay.Text = "Data : " + Date;
-            lblTimeStart.Text = "Starting In : " + StartingExam.ToString("hh:mm:ss tt"); ;
-            lblEndTime.Text = "Ending In : " + DateTime.Now.ToString("hh:mm:ss tt");//EndExam
-
-            BinaryFile f = new BinaryFile();
-            f.InsertStudentGrade("IMGExamGrade.my", txtBoxName.Text, GetGrade());
-
-            panelResultExam.Visible = true;
-
-            timerExamResult.Start();
-        }
 
         private void lblNext_Click(object sender, EventArgs e)
         {
-            if (A.GetQuestions().Count >= 1)
+            if (A.GetQuestions().Count >= 1)//A.GetQuestions().Count >0
             {
                 lblNext.Text = "Next";
                 lblBack.Enabled = true;
@@ -149,6 +125,28 @@ namespace App
                 panelName.Enabled = true;
                 MessageBox.Show("No Questions", "Karam App");
             }
+        }
+        private void lblBack_Click(object sender, EventArgs e)
+        {
+            AddClinetChoice();
+            if (counter > 0)
+            {
+                lblNext.Text = "Next";
+                counter--;
+                QuestNum--;
+                CheckClinetChoice();
+                pictureBox1.Image = Image.FromFile("img/" + RandomQuest[counter].GetIMGPath());
+                lblQuestion.Text = RandomQuest[counter].GetQuestion();
+                radioBtnAnswer1.Text = RandomQuest[counter].GetAnswer1();
+                radioBtnAnswer2.Text = RandomQuest[counter].GetAnswer2();
+                radioBtnAnswer3.Text = RandomQuest[counter].GetAnswer3();
+                radioBtnAnswer4.Text = RandomQuest[counter].GetAnswer4();
+                lblQNumber.Text = "Question " + QuestNum;
+                if (counter < 1)// counter == 0
+                    lblBack.Enabled = false;
+            }
+            else
+                lblBack.Enabled = false;
         }
         private void AddClinetChoice()
         {
@@ -189,28 +187,29 @@ namespace App
             else if (ClinetChoiceNumber[counter] == 4)
                 radioBtnAnswer4.Checked = true;
         }
-
-        private void lblBack_Click(object sender, EventArgs e)
+        private void ExamIsEnd()
         {
-            AddClinetChoice();
-            if (counter > 0)
-            {
-                lblNext.Text = "Next";
-                counter--;
-                QuestNum--;
-                CheckClinetChoice();
-                pictureBox1.Image = Image.FromFile("img/" + RandomQuest[counter].GetIMGPath());
-                lblQuestion.Text = RandomQuest[counter].GetQuestion();
-                radioBtnAnswer1.Text = RandomQuest[counter].GetAnswer1();
-                radioBtnAnswer2.Text = RandomQuest[counter].GetAnswer2();
-                radioBtnAnswer3.Text = RandomQuest[counter].GetAnswer3();
-                radioBtnAnswer4.Text = RandomQuest[counter].GetAnswer4();
-                lblQNumber.Text = "Question " + QuestNum;
-                if (counter < 1)
-                    lblBack.Enabled = false;
-            }
-            else
-                lblBack.Enabled = false;
+
+            timerTimeToEnd.Stop();
+
+            panelName.Visible = false;
+
+            panelQuestion.Visible = false;
+            panelQuestion.Location = new Point(133, 547);
+
+
+            //Result Panel
+            lblName2.Text = "Name : " + txtBoxName.Text;
+            lblDateDay.Text = "Data : " + Date;
+            lblTimeStart.Text = "Starting In : " + StartingExam.ToString("hh:mm:ss tt"); ;
+            lblEndTime.Text = "Ending In : " + DateTime.Now.ToString("hh:mm:ss tt");//EndExam
+
+            BinaryFile f = new BinaryFile();
+            f.InsertStudentGrade("IMGExamGrade.my", txtBoxName.Text, GetGrade());
+
+            panelResultExam.Visible = true;
+
+            timerExamResult.Start();
         }
 
         private void timerPanelQuestion_Tick(object sender, EventArgs e)
@@ -236,7 +235,7 @@ namespace App
             for (int i = 0; i < ClinetChoiceAnswer.Length; i++)
             {
                 if (ClinetChoiceAnswer[i] == RandomQuest[i].GetCorrect())
-                    sum += 100 / ClinetChoiceNumber.Length;
+                    sum += 100 / ClinetChoiceNumber.Length; //sum+=(100 / RandomQuest.Length);
                 else
                 {
                     TableWrongAnswers.Rows.Add(RandomQuest[i].GetQuestion(), ClinetChoiceAnswer[i], RandomQuest[i].GetCorrect());
@@ -245,8 +244,7 @@ namespace App
             }
             lblWrongAnswers.Text = "Wrong Answers : " + WrongAnswers;
             lblGrade.Text = "Grade : " + sum + "%";
-            if (WrongAnswers
-                > 3)
+            if (WrongAnswers> 3)
             {
                 lblResultExamColor.Text = "Failed";
                 lblResultExamColor.ForeColor = Color.Red;
